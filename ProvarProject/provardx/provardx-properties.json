@@ -1,0 +1,36 @@
+{
+   "connectionOverride": 
+   [
+     {"connection": "Admin", "username": "ProvarDX"}
+   ],
+   "provarHome":"GITHUBWORKSPACE/ProvarHome",
+   "projectPath":"GITHUBWORKSPACE/ProvarProject",
+   "resultsPath":"GITHUBWORKSPACE/ProvarProject/ANT/Results",
+   "resultsPathDisposition":"Replace", 
+   "testOutputLevel":"WARNING",
+   "pluginOutputlevel":"WARNING",
+   "excludeCallable":false,
+   "stopOnError":false,
+   "lightningMode":true,
+   "connectionRefreshType":"Reuse",
+   "metadata":{
+      "metadataLevel":"Reuse",
+      "cachePath":"GITHUBWORKSPACE/.provarCaches"
+   },
+   "testprojectSecrets": "ProvarSecretsPassword", 
+   "environment":{
+     "testEnvironment":"",
+     "webBrowser":"Chrome_Headless",
+     "webBrowserConfig":"Full Screen",
+     "webBrowserProviderName":"Desktop",
+     "webBrowserDeviceName":"Full Screen"
+   },
+   "testPlan":[
+      "Dreamhouse System Integration"
+   ],
+   "testplanFeatures": [
+      {"name": "PDF", "type": "OUTPUT", "enabled": "true"},
+      {"name": "PIECHART", "type": "OUTPUT", "enabled": "true"},
+      {"name": "EMAIL", "type": "NOTIFICATION", "enabled": "true"}
+   ]
+}

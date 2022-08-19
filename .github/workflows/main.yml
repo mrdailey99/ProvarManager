@@ -48,7 +48,7 @@ jobs:
         - uses: actions/setup-node@v2.1.2  
         - uses: sfdx-actions/setup-sfdx@v1
           with:
-            sfdx-auth-url: force://PlatformCLI::5Aep861NiuQwGoMdl5hGtfykpntgEERUZ.8MAKsPIw_SwXf.EXNL4LEnrA866gd8qpFiFcZGxnydLb4i19Birhc@brave-otter-7uycux-dev-ed.my.salesforce.com
+            sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
 
         - name: Setup NPM
           run: npm install
@@ -76,10 +76,10 @@ jobs:
             sfdx force:config:set defaultdevhubusername=${{ env.dev_hub_alias }} defaultusername=${{ env.dev_hub_alias }} --global
               
         - name: Insert Secrets Password
-          run: sed -i "s|ProvarSecretsPassword|Cactusforce2021|" $GITHUB_WORKSPACE/Cactusforce2021/provardx/provardx-properties.json
+          run: sed -i "s|ProvarSecretsPassword|${{ secrets.PROVAR_SECRETS_PASSWORD }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
 
         - name: Replace Workspace Path
-          run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/Cactusforce2021/provardx/provardx-properties.json
+          run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
           
         - name: Create Scratch Org 
           run: |
@@ -91,16 +91,16 @@ jobs:
             sfdx force:source:push -u ${{ env.scratch_org_alias }} -f --json --loglevel fatal
 
         - name: Validate ProvarDX property file
-          run: sfdx provar:validate -p Cactusforce2021/provardx/provardx-properties.json
+          run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties.json
 
         - name: Compile Provar Project
-          run: sfdx provar:compile -p Cactusforce2021/provardx/provardx-properties.json
+          run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties.json
 
         # - name: Reload Metadata Cache
-        #   run: sfdx provar:metadatacache -m 'Reload' -c '.provarCaches' -p Cactusforce2021/provardx/provardx-properties.json
+        #   run: sfdx provar:metadatacache -m 'Reload' -c '.provarCaches' -p ProvarProject/provardx/provardx-properties.json
 
         - name: Run Provar Tests
-          run: echo y | xvfb-run sfdx provar:runtests -p Cactusforce2021/provardx/provardx-properties.json 
+          run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties.json 
 
         - name: Delete Scratch Org
           run: sfdx force:org:delete -u ${{ env.scratch_org_alias }} --noprompt
