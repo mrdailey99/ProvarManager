@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <testProject secretsEncryption="JASYPT" selectedBrowserConfigurationName="Full Screen" selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedWebBrowserType="Chrome_Headless">
-  <title>/ProvarDemo/.testproject</title>
+  <title>/ProvarProject/.testproject</title>
   <configPath>config</configPath>
   <testsPath>tests</testsPath>
   <templatesPath>templates</templatesPath>
@@ -25,10 +25,10 @@
         <connection id="b8ae2efa-2e63-4950-8507-4132ad97ecdc" name="Admin">
           <summary/>
           <connectionUrls>
-            <connectionUrl secureStorageNodeId="103b9781-08af-4402-b672-1def063d0fca" url="sf:environment=PROD_DEV;apiLoginUrl=https://brave-otter-7uycux-dev-ed.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D3k000000vD06EAE/0053k00000AY9yBAAT;clientId={clientId};clientSecret={clientSecret};lightningMode=true;authenticationType=OAUTH;callbackUrl={callbackUrl};accessToken={accessToken};refreshToken={refreshToken};jwtCertType=JKS"/>
+            <connectionUrl secureStorageNodeId="103b9781-08af-4402-b672-1def063d0fca" url="sf:user=michael.dailey@brave-otter-7uycux.com;password={password};environment=PROD_DEV;apiLoginUrl=https://brave-otter-7uycux-dev-ed.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D3k000000vD06EAE/0053k00000AY9yBAAT;lightningMode=true"/>
             <connectionUrl envName="UAT" secureStorageNodeId="61ec5587-d28b-426f-82b0-450273197106" url="sf:user=michael.dailey@devops.center;password={password};environment=PROD_DEV;lightningMode=true"/>
             <connectionUrl envName="Production" secureStorageNodeId="299eff26-605b-4d09-81fa-77972ddf4583" url="sf:user=demo@provartesting.com;password={password};environment=PROD_DEV;lightningMode=true"/>
-            <connectionUrl envName="DEV" secureStorageNodeId="a3bb501c-f9a0-432a-b137-266c1b4bab54" url="sf:environment=PROD_DEV;apiLoginUrl=https://brave-otter-7uycux-dev-ed.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D3k000000vD06EAE/0053k00000AY9yBAAT;clientId={clientId};clientSecret={clientSecret};lightningMode=true;authenticationType=OAUTH;callbackUrl={callbackUrl};accessToken={accessToken};refreshToken={refreshToken};jwtCertType=JKS"/>
+            <connectionUrl envName="DEV" secureStorageNodeId="a3bb501c-f9a0-432a-b137-266c1b4bab54" url="sf:user=michael.dailey@brave-otter-7uycux.com;password={password};environment=PROD_DEV;lightningMode=true"/>
           </connectionUrls>
         </connection>
       </connections>
