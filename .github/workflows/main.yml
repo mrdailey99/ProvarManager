@@ -6,7 +6,7 @@ name: Regression
 # events but only for the master branch
 on:
   workflow_dispatch:
-  push: 
+  push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
@@ -103,9 +103,6 @@ jobs:
 
         - name: Compile Provar Project
           run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties.json
-
-        # - name: Reload Metadata Cache
-        #   run: sfdx provar:metadatacache -m 'Reload' -c '.provarCaches' -p ProvarProject/provardx/provardx-properties.json
 
         - name: Run Provar Tests
           run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties.json 
