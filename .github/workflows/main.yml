@@ -7,24 +7,13 @@ name: Regression
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - 'main'
+      - 'UAT'
+      - 'DEV'
   pull_request:
-    branches: [ main ]
     types:
-      - labeled
-      - unlabeled
-      - synchronize
       - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
   status: {}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
