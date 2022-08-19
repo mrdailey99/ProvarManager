@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testCase id="2">
+  <summary/>
+  <steps>
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
+      <arguments>
+        <argument id="connectionName">
+          <value class="value" valueClass="string">Admin</value>
+        </argument>
+        <argument id="resultName">
+          <value class="value" valueClass="string">Admin</value>
+        </argument>
+        <argument id="resultScope">
+          <value class="value" valueClass="string">Test</value>
+        </argument>
+        <argument id="uiApplicationName">
+          <value class="value" valueClass="string">LightningSales</value>
+        </argument>
+        <argument id="quickUiLogin">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="closeAllPrimaryTabs">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="reuseConnectionName"/>
+        <argument id="alreadyOpenBehaviour">
+          <value class="value" valueClass="string">Fail</value>
+        </argument>
+        <argument id="privateBrowsingMode"/>
+        <argument id="enableObjectIdLogging">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="autoCleanup">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="cleanupConnectionName"/>
+        <argument id="logFileLocation"/>
+        <argument id="username"/>
+        <argument id="password"/>
+        <argument id="securityToken"/>
+        <argument id="environment"/>
+        <argument id="lightningMode">
+          <value class="value" valueClass="string">default</value>
+        </argument>
+        <argument id="webBrowser"/>
+      </arguments>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="13" title="Create and Convert Lead">
+      <arguments>
+        <argument id="description">
+          <value class="value" valueClass="string">Create and Convert Lead</value>
+        </argument>
+      </arguments>
+      <clauses>
+        <clause name="hidden" testItemId="14">
+          <steps>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="5" title="Create Object: Lead=&gt;LeadId">
+              <arguments>
+                <argument id="objectType">
+                  <value class="value" valueClass="string">Lead</value>
+                </argument>
+                <argument id="resultIdName">
+                  <value class="value" valueClass="string">LeadId</value>
+                </argument>
+                <argument id="apexConnectionName">
+                  <value class="value" valueClass="string">Admin</value>
+                </argument>
+                <argument id="assignmentRuleId"/>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Test</value>
+                </argument>
+                <argument argId="45dbd5a4-9f0e-4be1-88fb-5daea1c1010c" id="LastName">
+                  <value class="variable">
+                    <path element="LastName"/>
+                  </value>
+                </argument>
+                <argument argId="58fbebbc-c34f-4f1e-8450-d814f424b48f" id="Company">
+                  <value class="variable">
+                    <path element="Company"/>
+                  </value>
+                </argument>
+                <argument argId="d8462088-cc18-474d-aeb7-958ae209a917" id="FirstName">
+                  <value class="variable">
+                    <path element="FirstName"/>
+                  </value>
+                </argument>
+              </arguments>
+              <parameterGeneratorProperties>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.CustomObjectName">Lead</propertyValue>
+              </parameterGeneratorProperties>
+              <generatedParameters>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Lead&amp;field=LastName" name="LastName" title="LastName"/>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Lead&amp;field=Company" name="Company" title="Company"/>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Lead&amp;field=FirstName" name="FirstName" title="FirstName"/>
+              </generatedParameters>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConvertLead" name="ApexConvertLead" testItemId="6" title="Convert Lead:  =&gt; //">
+              <arguments>
+                <argument id="apexConnectionName">
+                  <value class="value" valueClass="string">Admin</value>
+                </argument>
+                <argument id="leadId">
+                  <value class="variable">
+                    <path element="LeadId"/>
+                  </value>
+                </argument>
+                <argument id="accountId"/>
+                <argument id="contactId"/>
+                <argument id="ownerId"/>
+                <argument id="convertedStatus">
+                  <value class="value" valueClass="string">Closed - Converted</value>
+                </argument>
+                <argument id="createOpportunity">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
+                <argument argId="da90a820-8d21-42a1-8b58-8bf1b82622be" id="opportunityName">
+                  <value class="variable">
+                    <path element="OpportunityName"/>
+                  </value>
+                </argument>
+                <argument id="overwriteLeadSource">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
+                <argument id="sendNotificationEmail">
+                  <value class="value" valueClass="boolean">true</value>
+                </argument>
+                <argument id="resultAccountIdName">
+                  <value class="value" valueClass="string">convertedAccountId</value>
+                </argument>
+                <argument id="resultContactIdName">
+                  <value class="value" valueClass="string">convertedContactId</value>
+                </argument>
+                <argument id="resultOpportunityIdName">
+                  <value class="value" valueClass="string">convertedOpportunityId</value>
+                </argument>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Test</value>
+                </argument>
+              </arguments>
+            </apiCall>
+          </steps>
+        </clause>
+      </clauses>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="15" title="Validate Account, Contact, and Opp">
+      <arguments>
+        <argument id="description">
+          <value class="value" valueClass="string">Validate Account, Contact, and Opp</value>
+        </argument>
+      </arguments>
+      <clauses>
+        <clause name="hidden" testItemId="16">
+          <steps>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="7" title="Read Object: Account = {convertedAccountId}">
+              <arguments>
+                <argument id="objectType">
+                  <value class="value" valueClass="string">Account</value>
+                </argument>
+                <argument id="resultName">
+                  <value class="value" valueClass="string">AccountRead</value>
+                </argument>
+                <argument id="apexConnectionName">
+                  <value class="value" valueClass="string">Admin</value>
+                </argument>
+                <argument id="objectId">
+                  <value class="variable">
+                    <path element="convertedAccountId"/>
+                  </value>
+                </argument>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Test</value>
+                </argument>
+              </arguments>
+              <resultAssertions>
+                <resultAssertion resultName="Name" title="Check Name">
+                  <expected class="variable">
+                    <path element="Company"/>
+                  </expected>
+                </resultAssertion>
+              </resultAssertions>
+              <parameterGeneratorProperties>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">Account</propertyValue>
+              </parameterGeneratorProperties>
+              <generatedParameters>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Account&amp;field=Name" name="Name" title="Account Name"/>
+              </generatedParameters>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="8" title="Read Object: Contact = {convertedContactId}">
+              <arguments>
+                <argument id="objectType">
+                  <value class="value" valueClass="string">Contact</value>
+                </argument>
+                <argument id="resultName">
+                  <value class="value" valueClass="string">ContactRead</value>
+                </argument>
+                <argument id="apexConnectionName">
+                  <value class="value" valueClass="string">Admin</value>
+                </argument>
+                <argument id="objectId">
+                  <value class="variable">
+                    <path element="convertedContactId"/>
+                  </value>
+                </argument>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Test</value>
+                </argument>
+              </arguments>
+              <resultAssertions>
+                <resultAssertion resultName="FirstName" title="Check FirstName">
+                  <expected class="variable">
+                    <path element="FirstName"/>
+                  </expected>
+                </resultAssertion>
+                <resultAssertion resultName="LastName" title="Check LastName">
+                  <expected class="variable">
+                    <path element="LastName"/>
+                  </expected>
+                </resultAssertion>
+              </resultAssertions>
+              <parameterGeneratorProperties>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">Contact</propertyValue>
+              </parameterGeneratorProperties>
+              <generatedParameters>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Contact&amp;field=FirstName" name="FirstName" title="First Name"/>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Contact&amp;field=LastName" name="LastName" title="Last Name"/>
+              </generatedParameters>
+            </apiCall>
+            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="9" title="Read Object: Opportunity = {convertedOpportunityId}">
+              <arguments>
+                <argument id="objectType">
+                  <value class="value" valueClass="string">Opportunity</value>
+                </argument>
+                <argument id="resultName">
+                  <value class="value" valueClass="string">OpportunityRead</value>
+                </argument>
+                <argument id="apexConnectionName">
+                  <value class="value" valueClass="string">Admin</value>
+                </argument>
+                <argument id="objectId">
+                  <value class="variable">
+                    <path element="convertedOpportunityId"/>
+                  </value>
+                </argument>
+                <argument id="resultScope">
+                  <value class="value" valueClass="string">Test</value>
+                </argument>
+              </arguments>
+              <resultAssertions>
+                <resultAssertion resultName="Name" title="Check Name">
+                  <expected class="variable">
+                    <path element="OpportunityName"/>
+                  </expected>
+                </resultAssertion>
+              </resultAssertions>
+              <parameterGeneratorProperties>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+                <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">Opportunity</propertyValue>
+              </parameterGeneratorProperties>
+              <generatedParameters>
+                <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Opportunity&amp;field=Name" name="Name" title="Opportunity Name"/>
+              </generatedParameters>
+            </apiCall>
+          </steps>
+        </clause>
+      </clauses>
+    </apiCall>
+  </steps>
+  <params>
+    <param linkedToUrl="provar:hasvalue:d8462088-cc18-474d-aeb7-958ae209a917" modelBinding="sf:ui:binding:object?object=Lead&amp;field=FirstName" name="FirstName" title="FirstName">
+      <summary/>
+    </param>
+    <param linkedToUrl="provar:hasvalue:45dbd5a4-9f0e-4be1-88fb-5daea1c1010c" modelBinding="sf:ui:binding:object?object=Lead&amp;field=LastName" name="LastName" title="LastName">
+      <summary/>
+    </param>
+    <param linkedToUrl="provar:hasvalue:58fbebbc-c34f-4f1e-8450-d814f424b48f" modelBinding="sf:ui:binding:object?object=Lead&amp;field=Company" name="Company" title="Company">
+      <summary/>
+    </param>
+    <param linkedToUrl="provar:hasvalue:da90a820-8d21-42a1-8b58-8bf1b82622be" name="OpportunityName" title="Opportunity Name">
+      <summary>Name of the opportunity to create.</summary>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+    </param>
+  </params>
+  <args>
+    <argument id="FirstName">
+      <value class="value" valueClass="string">DevOps</value>
+    </argument>
+    <argument id="LastName">
+      <value class="funcCall" id="UniqueId">
+        <argument id="length">
+          <value class="value" valueClass="decimal">6</value>
+        </argument>
+      </value>
+    </argument>
+    <argument id="Company">
+      <value class="compound">
+        <parts>
+          <value valueClass="string">Provar Manager </value>
+          <funcCall id="UniqueId">
+            <argument id="length">
+              <value class="value" valueClass="decimal">6</value>
+            </argument>
+          </funcCall>
+        </parts>
+      </value>
+    </argument>
+    <argument id="OpportunityName">
+      <value class="compound">
+        <parts>
+          <value valueClass="string">Provar Manager - TEST </value>
+          <funcCall id="UniqueId">
+            <argument id="length">
+              <value class="value" valueClass="decimal">5</value>
+            </argument>
+          </funcCall>
+        </parts>
+      </value>
+    </argument>
+  </args>
+</testCase>
