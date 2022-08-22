@@ -81,6 +81,11 @@ jobs:
           run: |
             sfdx force:source:push -u ${{ env.scratch_org_alias }} -f --json --loglevel fatal
 
+        - name: Setup Dreamhouse App
+          run: |
+            sfdx force:user:permset:assign -n dreamhouse -u ${{ env.scratch_org_alias }}
+            sfdx force:data:tree:import -p dreamhouse-lwc/data/sample-data-plan.json -u ${{ env.scratch_org_alias }}
+
         - name: Validate ProvarDX property file
           run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties-scratch.json
 
