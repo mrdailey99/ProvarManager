@@ -1,4 +1,8 @@
 {
+   "connectionOverride": 
+   [
+     {"connection": "Admin", "username": "ProvarDX"}
+   ],
    "provarHome":"GITHUBWORKSPACE/ProvarHome",
    "projectPath":"GITHUBWORKSPACE/ProvarProject",
    "resultsPath":"GITHUBWORKSPACE/ProvarProject/ANT/Results",
@@ -15,7 +19,7 @@
    },
    "testprojectSecrets": "ProvarSecretsPassword", 
    "environment":{
-     "testEnvironment":"TEST_ENVIRONMENT",
+     "testEnvironment":"",
      "webBrowser":"Chrome_Headless",
      "webBrowserConfig":"Full Screen",
      "webBrowserProviderName":"Desktop",
