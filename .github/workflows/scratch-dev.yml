@@ -84,9 +84,9 @@ jobs:
         - name: Setup Dreamhouse App
           run: |
             sfdx force:user:permset:assign -n dreamhouse -u ${{ env.scratch_org_alias }}
-            sfdx force:data:tree:import -p force-app/main/default/staticresources/sample-data-properties.json -u ${{ env.scratch_org_alias }}
-            sfdx force:data:tree:import -p force-app/main/default/staticresources/sample-data-brokers.json -u ${{ env.scratch_org_alias }}
-            sfdx force:data:tree:import -p force-app/main/default/staticresources/sample-data-contacts.json -u ${{ env.scratch_org_alias }}
+            sfdx force:data:tree:import -p force-app/main/default/staticresources/sample_data_properties.json -u ${{ env.scratch_org_alias }}
+            sfdx force:data:tree:import -p force-app/main/default/staticresources/sample_data_brokers.json -u ${{ env.scratch_org_alias }}
+            sfdx force:data:tree:import -p force-app/main/default/staticresources/sample_data_contacts.json -u ${{ env.scratch_org_alias }}
 
         - name: Validate ProvarDX property file
           run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties-scratch.json
