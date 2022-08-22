@@ -6,22 +6,21 @@ name: Regression
 # events but only for the master branch
 on:
   workflow_dispatch:
-  push:
+  pull_request:
     branches:
-      - 'main'
+      - 'DEV'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
     provar_regression:
       # The type of runner that the job will run on
       runs-on: ubuntu-latest
-      environment: Production
       env:
+        scratch_org_alias: ProvarDX
         provar_major_version: latest
         provar_build_version: latest
         dev_hub_alias: SFDX-ENV
         provar_home: ${{ github.workspace }}/ProvarHome
-        test_environment: Production
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -66,14 +65,21 @@ jobs:
 
         - name: Replace Workspace Path
           run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
+          
+        - name: Insert Whitelist IP in Property File
+          run: |
+            ip=`curl https://api.ipify.org`
+            sed -i "s|IP_WHITELIST|${ip}|" config/project-scratch-def.json 
+            cat config/project-scratch-def.json
+              
+        - name: Create Scratch Org 
+          run: |
+            sfdx force:org:create -f $GITHUB_WORKSPACE/config/project-scratch-def.json -a ${{ env.scratch_org_alias }}
+            sfdx force:org:display -u ${{ env.scratch_org_alias }}
 
-        - name: Insert Test Environment
-          run: sed -i "s|TEST_ENVIRONMENT|${{ env.test_environment }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
-        
-        ## DevOps Center takes care of the pushing of source to an org
-        # - name: Push Branch to ${{ env.test_environment}} Org
-        #   run: |
-        #     sfdx force:source:push -u ${{ env.dev_hub_alias }} -f --json --loglevel fatal
+        - name: Push Branch to Scratch Org
+          run: |
+            sfdx force:source:push -u ${{ env.scratch_org_alias }} -f --json --loglevel fatal
 
         - name: Validate ProvarDX property file
           run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties.json
@@ -82,8 +88,11 @@ jobs:
           run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties.json
 
         - name: Run Provar Tests
-          run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties.json 
+          run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties-scratch.json 
 
+        - name: Delete Scratch Org
+          run: sfdx force:org:delete -u ${{ env.scratch_org_alias }} --noprompt
+       
         - name: Upload Test Results Folder
           uses: actions/upload-artifact@v2.2.1
           with:

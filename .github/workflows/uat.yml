@@ -8,20 +8,23 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'main'
+      - 'UAT'
+  pull_request:
+    branches:
+      - main
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
     provar_regression:
       # The type of runner that the job will run on
       runs-on: ubuntu-latest
-      environment: Production
+      environment: UAT
       env:
         provar_major_version: latest
         provar_build_version: latest
         dev_hub_alias: SFDX-ENV
         provar_home: ${{ github.workspace }}/ProvarHome
-        test_environment: Production
+        test_environment: UAT
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -69,7 +72,7 @@ jobs:
 
         - name: Insert Test Environment
           run: sed -i "s|TEST_ENVIRONMENT|${{ env.test_environment }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
-        
+
         ## DevOps Center takes care of the pushing of source to an org
         # - name: Push Branch to ${{ env.test_environment}} Org
         #   run: |
