@@ -25,8 +25,8 @@ jobs:
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v3.0.0
-        - uses: actions/setup-java@v3.1.1
+        - uses: actions/checkout@v2.4.2
+        - uses: actions/setup-java@v3.4.1
           with:
             java-version: '8'
             distribution: 'temurin'
@@ -85,7 +85,7 @@ jobs:
           run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties.json 
 
         - name: Upload Test Results Folder
-          uses: actions/upload-artifact@v2.2.1
+          uses: actions/upload-artifact@v3.1.0
           with:
             # Artifact name
             name: TestResults # optional, default is artifact
@@ -106,14 +106,23 @@ jobs:
           with:
             path: artifacts
 
+     #   - name: Publish JUnit Test Results
+     #     uses: EnricoMi/publish-unit-test-result-action@v2.0.0
+     #     with:
+     #       github_token: ${{ secrets.GITHUB_TOKEN }}
+     #       check_name: "Provar Regression Test Report"
+     #       # File pattern of test result files
+     #       junit_files: '**/Results/*.xml'
+     #       # Individual runs of the same test may see different failures. Reports all individual failures when set "true" or the first only otherwise
+     #       report_individual_runs: true
+     #      # De-duplicates classes with same name by their file name when set "true", combines test results for those classes otherwise
+     #       deduplicate_classes_by_file_name: false
         - name: Publish JUnit Test Results
-          uses: EnricoMi/publish-unit-test-result-action@v1.32
+          uses: mikepenz/action-junit-report@v3.3.3
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
+            report_paths: "**/Results/*.xml"
             check_name: "Provar Regression Test Report"
-            # File pattern of test result files
-            files: '**/Results/*.xml'
-            # Individual runs of the same test may see different failures. Reports all individual failures when set "true" or the first only otherwise
-            report_individual_runs: true
-            # De-duplicates classes with same name by their file name when set "true", combines test results for those classes otherwise
-            deduplicate_classes_by_file_name: false
+            fail_on_failure: true
+            include_passed: true
+            detailed_summary: true
