@@ -73,11 +73,12 @@ jobs:
         - name: Insert Test Environment
           run: sed -i "s|TEST_ENVIRONMENT|${{ env.test_environment }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
 
-        ## DevOps Center takes care of the pushing of source to an org
-        # - name: Push Branch to ${{ env.test_environment}} Org
-        #   run: |
-        #     sfdx force:source:push -u ${{ env.dev_hub_alias }} -f --json --loglevel fatal
-
+        - name: Setup Dreamhouse App
+          run: |
+            git clone https://github.com/trailheadapps/dreamhouse-lwc.git
+            sfdx force:user:permset:assign -n dreamhouse -u ${{ env.scratch_org_alias }}
+            sfdx force:data:tree:import -p dreamhouse-lwc/data/sample-data-plan.json -u ${{ env.scratch_org_alias }}
+            
         - name: Validate ProvarDX property file
           run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties.json
 
