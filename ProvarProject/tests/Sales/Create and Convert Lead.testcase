@@ -326,4 +326,7 @@
       </value>
     </argument>
   </args>
+  <associations>
+    <association assocationType="TM.TEST_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0R8d0000042W6YEAU"/>
+  </associations>
 </testCase>
