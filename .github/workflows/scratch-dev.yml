@@ -61,10 +61,10 @@ jobs:
             sfdx force:config:set defaultdevhubusername=${{ env.dev_hub_alias }} defaultusername=${{ env.dev_hub_alias }} --global
               
         - name: Insert Secrets Password
-          run: sed -i "s|ProvarSecretsPassword|${{ secrets.PROVAR_SECRETS_PASSWORD }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
+          run: sed -i "s|ProvarSecretsPassword|${{ secrets.PROVAR_SECRETS_PASSWORD }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties-scratch.json
 
         - name: Replace Workspace Path
-          run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
+          run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties-scratch.json
           
         - name: Insert Whitelist IP in Property File
           run: |
@@ -82,10 +82,10 @@ jobs:
             sfdx force:source:push -u ${{ env.scratch_org_alias }} -f --json --loglevel fatal
 
         - name: Validate ProvarDX property file
-          run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties.json
+          run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties-scratch.json
 
         - name: Compile Provar Project
-          run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties.json
+          run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties-scratch.json
 
         - name: Run Provar Tests
           run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties-scratch.json 
