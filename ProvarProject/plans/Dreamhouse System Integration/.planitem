@@ -2,6 +2,19 @@
 <testPlan>
   <planSettings/>
   <planFeatures>
+    <planFeature enabled="true" name="PIECHART" type="OUTPUT">
+      <settings mutable="Mutable">
+        <namedValue name="enabled">
+          <value class="value" valueClass="boolean">true</value>
+        </namedValue>
+        <namedValue name="includeLegend">
+          <value class="value" valueClass="boolean">true</value>
+        </namedValue>
+        <namedValue name="artifactName">
+          <value class="value" valueClass="string">pieChart.png</value>
+        </namedValue>
+      </settings>
+    </planFeature>
     <planFeature enabled="true" name="PDF" type="OUTPUT">
       <settings mutable="Mutable">
         <namedValue name="enabled">
@@ -57,34 +70,11 @@
         </namedValue>
       </settings>
     </planFeature>
-    <planFeature enabled="true" name="EMAIL" type="NOTIFICATION">
-      <settings mutable="Mutable">
-        <namedValue name="to">
-          <value class="value" valueClass="string"/>
-        </namedValue>
-        <namedValue name="cc">
-          <value class="value" valueClass="string"/>
-        </namedValue>
-        <namedValue name="subject">
-          <value class="value" valueClass="string">Test Plan Execution</value>
-        </namedValue>
-        <namedValue name="emailBody">
-          <value class="value" valueClass="string">Test Plan Run Report</value>
-        </namedValue>
-      </settings>
-    </planFeature>
-    <planFeature enabled="true" name="PIECHART" type="OUTPUT">
-      <settings mutable="Mutable">
-        <namedValue name="enabled">
-          <value class="value" valueClass="boolean">true</value>
-        </namedValue>
-        <namedValue name="includeLegend">
-          <value class="value" valueClass="boolean">true</value>
-        </namedValue>
-        <namedValue name="artifactName">
-          <value class="value" valueClass="string">pieChart.png</value>
-        </namedValue>
-      </settings>
+    <planFeature connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" enabled="true" name="TEST_MANAGER" type="REPORTING">
+      <settings mutable="Mutable"/>
     </planFeature>
   </planFeatures>
+  <associations>
+    <association assocationType="TM.TEST_PLAN" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0X8d000000uPctEAE"/>
+  </associations>
 </testPlan>
