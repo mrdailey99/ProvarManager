@@ -2,7 +2,7 @@
 	<property name="version" value="2.302.17.0"/>
 	<property environment="env"/>
 	<property name="provar.home" value="${env.provar_home}"/>
-	<property name="testproject.home" value="${env.GITHUBWORKSPACE}/ProvarProject"/>
+	<property name="testproject.home" value="${env.GITHUB_WORKSPACE}/ProvarProject"/>
 	<property name="testproject.results" value="${testproject.home}/ANT/Results"/>
 	<property name="secrets.password" value="${env.provar_secrets_password}"/>
 
