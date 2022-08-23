@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testProject secretsEncryption="JASYPT" selectedBrowserConfigurationName="Full Screen" selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="Production" selectedWebBrowserType="Chrome_Headless">
+<testProject secretsEncryption="JASYPT" selectedBrowserConfigurationName="Full Screen" selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedWebBrowserType="Chrome_Headless">
   <title>/ProvarProject/.testproject</title>
   <configPath>config</configPath>
   <testsPath>tests</testsPath>
@@ -27,7 +27,19 @@
       </associations>
     </environment>
   </environments>
-  <variables/>
+  <variables>
+    <testVariable name="SlackFileUploadToken">
+      <valueType class="textType">
+        <constraints>
+          <valueConstraint name="password">true</valueConstraint>
+        </constraints>
+      </valueType>
+      <summary/>
+      <values>
+        <testVariableValue secureStorageNodeId="0e70ae11-6b3d-4aeb-847b-cc33cb8e4194"/>
+      </values>
+    </testVariable>
+  </variables>
   <connectionClasses>
     <connectionClass name="sf">
       <connections>
@@ -47,8 +59,10 @@
         <connection id="40c9e48f-d2da-4c34-8519-ba8b0c0d3eff" name="Slack">
           <summary/>
           <connectionUrls>
-            <connectionUrl url="restservice:url=https://hooks.slack.com/services/;authenticationType=NO_AUTHENTICATION">
-              <customHeaders/>
+            <connectionUrl url="restservice:url=https://hooks.slack.com/services;authenticationType=NO_AUTHENTICATION">
+              <customHeaders>
+                <customHeader key="Content-Type" value="application/json"/>
+              </customHeaders>
             </connectionUrl>
           </connectionUrls>
         </connection>
@@ -56,7 +70,10 @@
           <summary/>
           <connectionUrls>
             <connectionUrl url="restservice:url=https://slack.com/api;authenticationType=NO_AUTHENTICATION">
-              <customHeaders/>
+              <customHeaders>
+                <customHeader key="Content-Type" value="multipart/form-data"/>
+                <customHeader key="Content-Type" value="application/x-www-form-urlencoded"/>
+              </customHeaders>
             </connectionUrl>
           </connectionUrls>
         </connection>
@@ -90,6 +107,7 @@
       <summary>Fixed 1920x1080</summary>
     </browserConfiguration>
   </browserConfigurations>
+  <antPath>ANT</antPath>
   <browserApplications>
     <browserApplication connectionTypes="sf" name="Salesforce1">
       <properties>
