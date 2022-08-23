@@ -42,16 +42,6 @@ jobs:
             echo "Unzip Provar ANT Files"
             unzip -q Provar_ANT_${{ env.provar_build_version }}.zip -d $GITHUB_WORKSPACE/ProvarHome
             ls -la ${{ env.provar_home }}
-            
-        - name: Install Chromium
-          run: |
-            sudo apt-get update && sudo apt-get upgrade       
-            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -        
-            sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >>sudo tee -a /etc/apt/sources.list.d/google-chrome.list
-            sudo apt-get -y install google-chrome-stable
-        
-        - name: Install Firefox
-          run: sudo add-apt-repository ppa:mozillateam/firefox-next && sudo apt install firefox
 
         - name: Run Provar Tests
           run: xvfb-run ant -f ProvarProject/ANT/build.xml
