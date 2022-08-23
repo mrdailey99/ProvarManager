@@ -38,9 +38,6 @@
         <namedValue name="includeSkippedTestSteps">
           <value class="value" valueClass="boolean">false</value>
         </namedValue>
-        <namedValue name="includeTestCaseShowSummary">
-          <value class="value" valueClass="boolean">true</value>
-        </namedValue>
         <namedValue name="includeTestStepTime">
           <value class="value" valueClass="boolean">true</value>
         </namedValue>
@@ -67,6 +64,25 @@
         </namedValue>
         <namedValue name="artifactName">
           <value class="value" valueClass="string">executionReport.pdf</value>
+        </namedValue>
+        <namedValue name="includeTestCaseShowSummary">
+          <value class="value" valueClass="boolean">true</value>
+        </namedValue>
+      </settings>
+    </planFeature>
+    <planFeature enabled="true" name="EMAIL" type="NOTIFICATION">
+      <settings mutable="Mutable">
+        <namedValue name="to">
+          <value class="value" valueClass="string"/>
+        </namedValue>
+        <namedValue name="cc">
+          <value class="value" valueClass="string"/>
+        </namedValue>
+        <namedValue name="subject">
+          <value class="value" valueClass="string">Test Plan Execution</value>
+        </namedValue>
+        <namedValue name="emailBody">
+          <value class="value" valueClass="string">Test Plan Run Report</value>
         </namedValue>
       </settings>
     </planFeature>

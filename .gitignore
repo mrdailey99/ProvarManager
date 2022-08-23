@@ -38,3 +38,5 @@ $RECYCLE.BIN/
 .testCycles
 **/ANT/Results*
 **/*.pdf
+**/provardx-properties-local.json
+**/build_*.xml
