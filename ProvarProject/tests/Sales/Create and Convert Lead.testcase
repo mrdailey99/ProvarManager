@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase id="2">
+<testCase id="0">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
@@ -95,49 +95,113 @@
                 <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Lead&amp;field=FirstName" name="FirstName" title="FirstName"/>
               </generatedParameters>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConvertLead" name="ApexConvertLead" testItemId="6" title="Convert Lead:  =&gt; //">
+            <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="17" title="If: {GetSelectedEnvironment() = &quot;Production&quot;}">
               <arguments>
-                <argument id="apexConnectionName">
-                  <value class="value" valueClass="string">Admin</value>
-                </argument>
-                <argument id="leadId">
-                  <value class="variable">
-                    <path element="LeadId"/>
+                <argument id="condition">
+                  <value class="eq">
+                    <lhs class="funcCall" id="GetSelectedEnvironment"/>
+                    <rhs class="value" valueClass="string">Production</rhs>
                   </value>
-                </argument>
-                <argument id="accountId"/>
-                <argument id="contactId"/>
-                <argument id="ownerId"/>
-                <argument id="convertedStatus">
-                  <value class="value" valueClass="string">Closed - Converted</value>
-                </argument>
-                <argument id="createOpportunity">
-                  <value class="value" valueClass="boolean">true</value>
-                </argument>
-                <argument argId="da90a820-8d21-42a1-8b58-8bf1b82622be" id="opportunityName">
-                  <value class="variable">
-                    <path element="OpportunityName"/>
-                  </value>
-                </argument>
-                <argument id="overwriteLeadSource">
-                  <value class="value" valueClass="boolean">true</value>
-                </argument>
-                <argument id="sendNotificationEmail">
-                  <value class="value" valueClass="boolean">true</value>
-                </argument>
-                <argument id="resultAccountIdName">
-                  <value class="value" valueClass="string">convertedAccountId</value>
-                </argument>
-                <argument id="resultContactIdName">
-                  <value class="value" valueClass="string">convertedContactId</value>
-                </argument>
-                <argument id="resultOpportunityIdName">
-                  <value class="value" valueClass="string">convertedOpportunityId</value>
-                </argument>
-                <argument id="resultScope">
-                  <value class="value" valueClass="string">Test</value>
                 </argument>
               </arguments>
+              <clauses>
+                <clause name="then" testItemId="18">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConvertLead" name="ApexConvertLead" testItemId="20" title="Convert Lead:  =&gt; //">
+                      <arguments>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">Admin</value>
+                        </argument>
+                        <argument id="leadId">
+                          <value class="variable">
+                            <path element="LeadId"/>
+                          </value>
+                        </argument>
+                        <argument id="accountId"/>
+                        <argument id="contactId"/>
+                        <argument id="ownerId"/>
+                        <argument id="convertedStatus">
+                          <value class="value" valueClass="string">Qualified</value>
+                        </argument>
+                        <argument id="createOpportunity">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument argId="da90a820-8d21-42a1-8b58-8bf1b82622be" id="opportunityName">
+                          <value class="variable">
+                            <path element="OpportunityName"/>
+                          </value>
+                        </argument>
+                        <argument id="overwriteLeadSource">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument id="sendNotificationEmail">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument id="resultAccountIdName">
+                          <value class="value" valueClass="string">convertedAccountId</value>
+                        </argument>
+                        <argument id="resultContactIdName">
+                          <value class="value" valueClass="string">convertedContactId</value>
+                        </argument>
+                        <argument id="resultOpportunityIdName">
+                          <value class="value" valueClass="string">convertedOpportunityId</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                  </steps>
+                </clause>
+                <clause name="else" testItemId="19">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConvertLead" name="ApexConvertLead" testItemId="21" title="Convert Lead:  =&gt; //">
+                      <arguments>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">Admin</value>
+                        </argument>
+                        <argument id="leadId">
+                          <value class="variable">
+                            <path element="LeadId"/>
+                          </value>
+                        </argument>
+                        <argument id="accountId"/>
+                        <argument id="contactId"/>
+                        <argument id="ownerId"/>
+                        <argument id="convertedStatus">
+                          <value class="value" valueClass="string">Closed - Converted</value>
+                        </argument>
+                        <argument id="createOpportunity">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument argId="da90a820-8d21-42a1-8b58-8bf1b82622be" id="opportunityName">
+                          <value class="variable">
+                            <path element="OpportunityName"/>
+                          </value>
+                        </argument>
+                        <argument id="overwriteLeadSource">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument id="sendNotificationEmail">
+                          <value class="value" valueClass="boolean">true</value>
+                        </argument>
+                        <argument id="resultAccountIdName">
+                          <value class="value" valueClass="string">convertedAccountId</value>
+                        </argument>
+                        <argument id="resultContactIdName">
+                          <value class="value" valueClass="string">convertedContactId</value>
+                        </argument>
+                        <argument id="resultOpportunityIdName">
+                          <value class="value" valueClass="string">convertedOpportunityId</value>
+                        </argument>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
             </apiCall>
           </steps>
         </clause>
