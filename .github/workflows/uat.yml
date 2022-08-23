@@ -19,9 +19,10 @@ jobs:
       env:
         provar_major_version: latest
         provar_build_version: latest
-        dev_hub_alias: SFDX-ENV
         provar_home: ${{ github.workspace }}/ProvarHome
         test_environment: UAT
+        provar_secrets_password: ${{ secrets.PROVAR_SECRETS_PASSWORD}}
+        test_plan: Dreamhouse System Integration
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -30,20 +31,7 @@ jobs:
           with:
             java-version: '8'
             distribution: 'temurin'
-        - uses: actions/setup-node@v3
-          with:
-            node-version: '14'
-        - name: Setup NPM
-          run: npm install
-        - uses: sfdx-actions/setup-sfdx@v1
-          with:
-            sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
-
-        - name: Install ProvarDX SFDX Plugin
-          run: |
-            echo y | sfdx plugins:install @provartesting/provardx
-            sfdx plugins:update
-
+     
         - name: Download Provar CLI
           uses: wei/wget@v1.1.1
           with:
@@ -54,36 +42,9 @@ jobs:
             echo "Unzip Provar ANT Files"
             unzip -q Provar_ANT_${{ env.provar_build_version }}.zip -d $GITHUB_WORKSPACE/ProvarHome
             ls -la ${{ env.provar_home }}
-            ls -la ${{ env.provar_home }}/provardx
-            
-        - name: List Authenticated Orgs and Set Default Username
-          run: |
-            sfdx force:org:list --clean
-            sfdx force:config:set defaultdevhubusername=${{ env.dev_hub_alias }} defaultusername=${{ env.dev_hub_alias }} --global
-              
-        - name: Insert Secrets Password
-          run: sed -i "s|ProvarSecretsPassword|${{ secrets.PROVAR_SECRETS_PASSWORD }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
-
-        - name: Replace Workspace Path
-          run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
-
-        - name: Insert Test Environment
-          run: sed -i "s|TEST_ENVIRONMENT|${{ env.test_environment }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties.json
-  
-        # - name: Setup Dreamhouse App
-        #   run: |
-        #     git clone https://github.com/trailheadapps/dreamhouse-lwc.git
-        #     sfdx force:user:permset:assign -n dreamhouse -u ${{ env.dev_hub_alias }}
-        #     sfdx force:data:tree:import -p dreamhouse-lwc/data/sample-data-plan.json -u ${{ env.dev_hub_alias }}
-
-        - name: Validate ProvarDX property file
-          run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties.json
-
-        - name: Compile Provar Project
-          run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties.json
 
         - name: Run Provar Tests
-          run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties.json 
+          run: xvfb-run ant -f ProvarProject/ANT/build.xml
 
         - name: Upload Test Results Folder
           uses: actions/upload-artifact@v3.1.0
