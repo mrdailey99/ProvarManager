@@ -179,6 +179,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Email__c</field>
+            <value>
+                <elementReference>property_email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Location__Latitude__s</field>
             <value>
                 <elementReference>geocode_address.lat</elementReference>
@@ -473,6 +479,13 @@
             <name>property_phone</name>
             <dataType>String</dataType>
             <fieldText>Property Phone</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>property_email</name>
+            <dataType>String</dataType>
+            <fieldText>Property Email</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
         </fields>
