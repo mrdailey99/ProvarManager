@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testPlanInstance testCasePath="tests/Dreamhouse/Broker/Create Broker.testcase">
+  <planSettings/>
+  <planFeatures/>
+  <associations>
+    <association assocationType="TM.TEST_SUITE_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0c8d000001hsZoAAI"/>
+  </associations>
+</testPlanInstance>

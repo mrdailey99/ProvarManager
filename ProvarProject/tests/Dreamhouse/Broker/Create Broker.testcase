@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testCase registryId="d19fcaef-196d-44a6-863f-b1b506d8a640" visibility="Internal">
+  <summary/>
+  <steps>
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
+      <arguments>
+        <argument id="connectionName">
+          <value class="value" valueClass="string">Admin</value>
+        </argument>
+        <argument id="resultName">
+          <value class="value" valueClass="string">Admin</value>
+        </argument>
+        <argument id="resultScope">
+          <value class="value" valueClass="string">Test</value>
+        </argument>
+        <argument id="uiApplicationName">
+          <value class="value" valueClass="string">Dreamhouse</value>
+        </argument>
+        <argument id="quickUiLogin">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="closeAllPrimaryTabs">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument argId="0430b980-5786-43ff-b900-f149c9d43a87" id="reuseConnectionName">
+          <value class="variable">
+            <path element="reuseConnectionName"/>
+          </value>
+        </argument>
+        <argument id="alreadyOpenBehaviour">
+          <value class="value" valueClass="string">Reuse</value>
+        </argument>
+        <argument id="privateBrowsingMode"/>
+        <argument id="enableObjectIdLogging">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="autoCleanup">
+          <value class="value" valueClass="boolean">true</value>
+        </argument>
+        <argument id="cleanupConnectionName"/>
+        <argument id="logFileLocation"/>
+        <argument id="username"/>
+        <argument id="password"/>
+        <argument id="securityToken"/>
+        <argument id="environment"/>
+        <argument id="lightningMode">
+          <value class="value" valueClass="string">default</value>
+        </argument>
+        <argument id="webBrowser"/>
+      </arguments>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="3" title="Create Object: Broker__c=&gt;BrokerId">
+      <arguments>
+        <argument id="objectType">
+          <value class="value" valueClass="string">Broker__c</value>
+        </argument>
+        <argument id="resultIdName">
+          <value class="value" valueClass="string">BrokerId</value>
+        </argument>
+        <argument id="apexConnectionName">
+          <value class="value" valueClass="string">Admin</value>
+        </argument>
+        <argument id="assignmentRuleId"/>
+        <argument id="resultScope">
+          <value class="value" valueClass="string">Test</value>
+        </argument>
+        <argument argId="2cfc87e1-2cc5-426e-8d41-f32680a9dd46" id="Name">
+          <value class="variable">
+            <path element="Name"/>
+          </value>
+        </argument>
+        <argument argId="9ebca087-13b8-4d1f-adce-a607488af929" id="Email__c">
+          <value class="variable">
+            <path element="Email"/>
+          </value>
+        </argument>
+        <argument argId="c0b5776b-322a-4171-b2a0-ba34a9b22f08" id="Phone__c">
+          <value class="variable">
+            <path element="Phone"/>
+          </value>
+        </argument>
+        <argument argId="2811ce6b-8108-46ed-abec-2b7dd31a10f5" id="Title__c">
+          <value class="variable">
+            <path element="Title"/>
+          </value>
+        </argument>
+      </arguments>
+      <parameterGeneratorProperties>
+        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.CustomObjectName">Broker__c</propertyValue>
+      </parameterGeneratorProperties>
+      <generatedParameters>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Name" name="Name" title="Name"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Email__c" name="Email__c" title="Email__c"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Phone__c" name="Phone__c" title="Phone__c"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Title__c" name="Title__c" title="Title__c"/>
+      </generatedParameters>
+    </apiCall>
+    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="4" title="Read Object: Broker__c = {BrokerId}">
+      <arguments>
+        <argument id="objectType">
+          <value class="value" valueClass="string">Broker__c</value>
+        </argument>
+        <argument id="resultName">
+          <value class="value" valueClass="string">BrokerRead</value>
+        </argument>
+        <argument id="apexConnectionName">
+          <value class="value" valueClass="string">Admin</value>
+        </argument>
+        <argument id="objectId">
+          <value class="variable">
+            <path element="BrokerId"/>
+          </value>
+        </argument>
+        <argument id="resultScope">
+          <value class="value" valueClass="string">Test</value>
+        </argument>
+      </arguments>
+      <resultAssertions>
+        <resultAssertion resultName="Name" title="Check Name">
+          <expected class="variable">
+            <path element="Name"/>
+          </expected>
+        </resultAssertion>
+        <resultAssertion resultName="Email__c" title="Check Email__c">
+          <expected class="variable">
+            <path element="Email"/>
+          </expected>
+        </resultAssertion>
+        <resultAssertion resultName="Phone__c" title="Check Phone__c">
+          <expected class="variable">
+            <path element="Phone"/>
+          </expected>
+        </resultAssertion>
+        <resultAssertion resultName="Title__c" title="Check Title__c">
+          <expected class="variable">
+            <path element="Title"/>
+          </expected>
+        </resultAssertion>
+      </resultAssertions>
+      <parameterGeneratorProperties>
+        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand.CustomObjectName">Broker__c</propertyValue>
+      </parameterGeneratorProperties>
+      <generatedParameters>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Name" name="Name" title="Broker Name"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Email__c" name="Email__c" title="Email"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Phone__c" name="Phone__c" title="Phone"/>
+        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Title__c" name="Title__c" title="Title"/>
+      </generatedParameters>
+    </apiCall>
+  </steps>
+  <params>
+    <param linkedToUrl="provar:hasvalue:2cfc87e1-2cc5-426e-8d41-f32680a9dd46" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Name" name="Name" title="Name">
+      <summary/>
+    </param>
+    <param linkedToUrl="provar:hasvalue:9ebca087-13b8-4d1f-adce-a607488af929" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Email__c" name="Email" title="Email">
+      <summary>\t</summary>
+    </param>
+    <param linkedToUrl="provar:hasvalue:c0b5776b-322a-4171-b2a0-ba34a9b22f08" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Phone__c" name="Phone" title="Phone">
+      <summary/>
+    </param>
+    <param linkedToUrl="provar:hasvalue:2811ce6b-8108-46ed-abec-2b7dd31a10f5" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Title__c" name="Title" title="Title">
+      <summary/>
+    </param>
+    <param linkedToUrl="provar:hasvalue:0430b980-5786-43ff-b900-f149c9d43a87" name="reuseConnectionName" title="Override Connection">
+      <summary>The name of an already opened connect to re-use.</summary>
+      <type>
+        <connectionType>
+          <constraints>
+            <valueConstraint name="variableName">true</valueConstraint>
+            <valueConstraint name="requiredCapabilities">sfSoapConnect</valueConstraint>
+          </constraints>
+        </connectionType>
+      </type>
+    </param>
+  </params>
+  <outputParams>
+    <param name="BrokerId" title="BrokerId">
+      <summary>The name under which the resulting Object Id will be stored.</summary>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+      <sourceValue class="variable">
+        <path element="BrokerId"/>
+      </sourceValue>
+    </param>
+  </outputParams>
+  <args>
+    <argument id="Name">
+      <value class="compound">
+        <parts>
+          <value valueClass="string">Jim Realtor </value>
+          <funcCall id="UniqueId">
+            <argument id="length">
+              <value class="value" valueClass="decimal">5</value>
+            </argument>
+          </funcCall>
+        </parts>
+      </value>
+    </argument>
+    <argument id="Email">
+      <value class="value" valueClass="string">jim.realtor@testing.com</value>
+    </argument>
+    <argument id="Phone">
+      <value class="compound">
+        <parts>
+          <funcCall id="UniqueId">
+            <argument id="length">
+              <value class="value" valueClass="decimal">3</value>
+            </argument>
+            <argument id="format">
+              <value class="variable">
+                <path element="NUMERIC"/>
+              </value>
+            </argument>
+          </funcCall>
+          <value valueClass="string">-</value>
+          <funcCall id="UniqueId">
+            <argument id="length">
+              <value class="value" valueClass="decimal">3</value>
+            </argument>
+            <argument id="format">
+              <value class="variable">
+                <path element="NUMERIC"/>
+              </value>
+            </argument>
+          </funcCall>
+          <value valueClass="string">-</value>
+          <funcCall id="UniqueId">
+            <argument id="length">
+              <value class="value" valueClass="decimal">4</value>
+            </argument>
+            <argument id="format">
+              <value class="variable">
+                <path element="NUMERIC"/>
+              </value>
+            </argument>
+          </funcCall>
+        </parts>
+      </value>
+    </argument>
+    <argument id="Title">
+      <value class="value" valueClass="string">Real Estate Broker</value>
+    </argument>
+    <argument id="reuseConnectionName"/>
+  </args>
+  <outputArgs>
+    <outputArgument id="BrokerId">
+      <name class="value" valueClass="string">BrokerId</name>
+    </outputArgument>
+  </outputArgs>
+  <associations>
+    <association assocationType="TM.TEST_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0R8d0000042eepEAA"/>
+  </associations>
+</testCase>
