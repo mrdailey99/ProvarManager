@@ -15,33 +15,22 @@ jobs:
     provar_regression:
       # The type of runner that the job will run on
       runs-on: ubuntu-latest
+      environment: Scratch
       env:
-        scratch_org_alias: ProvarDX
         provar_major_version: latest
         provar_build_version: latest
-        dev_hub_alias: SFDX-ENV
         provar_home: ${{ github.workspace }}/ProvarHome
+        test_environment: Scratch
+        provar_secrets_password: ${{ secrets.PROVAR_SECRETS_PASSWORD}}
+        test_plan: Dreamhouse System Integration
       # Steps represent a sequence of tasks that will be executed as part of the job
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        - uses: actions/checkout@v3.0.0
-        - uses: actions/setup-java@v3.1.1
+        - uses: actions/checkout@v2.4.2
+        - uses: actions/setup-java@v3.4.1
           with:
             java-version: '8'
             distribution: 'temurin'
-        - uses: actions/setup-node@v3
-          with:
-            node-version: '14'
-        - name: Setup NPM
-          run: npm install
-        - uses: sfdx-actions/setup-sfdx@v1
-          with:
-            sfdx-auth-url: ${{ secrets.SFDX_AUTH_URL }}
-
-        - name: Install ProvarDX SFDX Plugin
-          run: |
-            echo y | sfdx plugins:install @provartesting/provardx
-            sfdx plugins:update
 
         - name: Download Provar CLI
           uses: wei/wget@v1.1.1
@@ -53,54 +42,12 @@ jobs:
             echo "Unzip Provar ANT Files"
             unzip -q Provar_ANT_${{ env.provar_build_version }}.zip -d $GITHUB_WORKSPACE/ProvarHome
             ls -la ${{ env.provar_home }}
-            ls -la ${{ env.provar_home }}/provardx
-            
-        - name: List Authenticated Orgs and Set Default Username
-          run: |
-            sfdx force:org:list --clean
-            sfdx force:config:set defaultdevhubusername=${{ env.dev_hub_alias }} defaultusername=${{ env.dev_hub_alias }} --global
-              
-        - name: Insert Secrets Password
-          run: sed -i "s|ProvarSecretsPassword|${{ secrets.PROVAR_SECRETS_PASSWORD }}|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties-scratch.json
-
-        - name: Replace Workspace Path
-          run: sed -i "s|GITHUBWORKSPACE|$GITHUB_WORKSPACE|" $GITHUB_WORKSPACE/ProvarProject/provardx/provardx-properties-scratch.json
-          
-        - name: Insert Whitelist IP in Property File
-          run: |
-            ip=`curl https://api.ipify.org`
-            sed -i "s|IP_WHITELIST|${ip}|" config/project-scratch-def.json 
-            cat config/project-scratch-def.json
-              
-        - name: Create Scratch Org 
-          run: |
-            sfdx force:org:create -f $GITHUB_WORKSPACE/config/project-scratch-def.json -a ${{ env.scratch_org_alias }}
-            sfdx force:org:display -u ${{ env.scratch_org_alias }}
-
-        - name: Push Branch to Scratch Org
-          run: |
-            sfdx force:source:push -u ${{ env.scratch_org_alias }} -f --json --loglevel fatal
-
-        - name: Setup Dreamhouse App
-          run: |
-            git clone https://github.com/trailheadapps/dreamhouse-lwc.git
-            sfdx force:user:permset:assign -n dreamhouse -u ${{ env.scratch_org_alias }}
-            sfdx force:data:tree:import -p dreamhouse-lwc/data/sample-data-plan.json -u ${{ env.scratch_org_alias }}
-
-        - name: Validate ProvarDX property file
-          run: sfdx provar:validate -p ProvarProject/provardx/provardx-properties-scratch.json
-
-        - name: Compile Provar Project
-          run: sfdx provar:compile -p ProvarProject/provardx/provardx-properties-scratch.json
 
         - name: Run Provar Tests
-          run: echo y | xvfb-run sfdx provar:runtests -p ProvarProject/provardx/provardx-properties-scratch.json 
+          run: xvfb-run ant -f ProvarProject/ANT/build.xml
 
-        - name: Delete Scratch Org
-          run: sfdx force:org:delete -u ${{ env.scratch_org_alias }} --noprompt
-       
         - name: Upload Test Results Folder
-          uses: actions/upload-artifact@v2.2.1
+          uses: actions/upload-artifact@v3.1.0
           with:
             # Artifact name
             name: TestResults # optional, default is artifact
@@ -122,13 +69,11 @@ jobs:
             path: artifacts
 
         - name: Publish JUnit Test Results
-          uses: EnricoMi/publish-unit-test-result-action@v1.32
+          uses: mikepenz/action-junit-report@v3.3.3
           with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.GITHUB_TOKEN }}
+            report_paths: "**/Results/*.xml"
             check_name: "Provar Regression Test Report"
-            # File pattern of test result files
-            files: '**/Results/*.xml'
-            # Individual runs of the same test may see different failures. Reports all individual failures when set "true" or the first only otherwise
-            report_individual_runs: true
-            # De-duplicates classes with same name by their file name when set "true", combines test results for those classes otherwise
-            deduplicate_classes_by_file_name: false
+            fail_on_failure: true
+            include_passed: true
+            detailed_summary: true
