@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase id="15">
+<testCase id="5">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
@@ -84,999 +84,1154 @@
         <clause name="hidden" testItemId="3"/>
       </clauses>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="7" title="On SF Property Home screen">
+    <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="77" title="Read Broker Data from Excel">
       <arguments>
-        <argument id="uiConnectionName">
-          <value class="value" valueClass="string">Admin</value>
-        </argument>
-        <argument id="target">
-          <value class="uiTarget" uri="sf:ui:target?object=Property__c&amp;action=ObjectHome"/>
-        </argument>
-        <argument id="navigate">
-          <value class="value" valueClass="string">Always</value>
-        </argument>
-        <argument id="targetDescription">
-          <value class="value" valueClass="string">On SF Property Home screen</value>
-        </argument>
-        <argument id="windowSelection">
-          <value class="value" valueClass="string">Default</value>
-        </argument>
-        <argument id="windowSize">
-          <value class="value" valueClass="string">Default</value>
-        </argument>
-        <argument id="closeWindow"/>
-        <argument id="captureBefore">
-          <value class="value" valueClass="string">false</value>
-        </argument>
-        <argument id="captureAfter">
-          <value class="value" valueClass="string">false</value>
+        <argument id="description">
+          <value class="value" valueClass="string">Read Broker Data from Excel</value>
         </argument>
       </arguments>
+      <parameterValueSources>
+        <parameterValueSource variableName="BrokerData" variableScope="Test">
+          <cacheToken>C:/Users/16156/git/PM/ProvarProject/templates/DreamhouseData.xlsx;1660864927063</cacheToken>
+          <cachedParameters>
+            <apiParam name="RowNumber"/>
+            <apiParam name="Name"/>
+            <apiParam name="Phone"/>
+            <apiParam name="Title"/>
+            <apiParam name="Email"/>
+          </cachedParameters>
+          <sourceValue class="excelTarget" namesLocation="FirstRowOfRange" whereComparison="EqualTo">
+            <workbookPath class="value" valueClass="string">templates/DreamhouseData.xlsx</workbookPath>
+            <worksheetName class="value" valueClass="string">Broker</worksheetName>
+            <valuesRange class="value" valueClass="string">A1:D2</valuesRange>
+          </sourceValue>
+        </parameterValueSource>
+      </parameterValueSources>
       <clauses>
-        <clause name="substeps" testItemId="8">
-          <steps>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="9" title="Click the New button">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=New&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26action%3DNew"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=action"/>
-                </argument>
-                <argument id="hover">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Click the New button</value>
-                </argument>
-                <argument id="autoRetry"/>
-                <argument id="ieClickMethod">
-                  <value class="value" valueClass="string">Default</value>
-                </argument>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" name="hover" seq="10000" title="Hover before Clicking">
-                  <summary>Whether the mouse should hover over the field before it is clicked.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="ieClickMethod" seq="10001" title="IE Click Method">
-                  <summary>How the click should be executed for Internet Explorer.</summary>
-                  <type>
-                    <choiceType>
-                      <constraints>
-                        <valueConstraint name="valuesSource">com.provar.core.model.base.java.EnumChoiceListValuesSource</valueConstraint>
-                        <valueConstraint name="valuesSourceDependencies">com.provar.core.model.ui.api.ClickMethod</valueConstraint>
-                      </constraints>
-                    </choiceType>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-          </steps>
-        </clause>
+        <clause name="hidden" testItemId="78"/>
       </clauses>
     </apiCall>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="10" title="On SF Property New screen">
+    <caseCall testCaseId="d19fcaef-196d-44a6-863f-b1b506d8a640" testCasePath="tests/Dreamhouse/Broker/Create Broker.testcase" testItemId="75">
       <arguments>
-        <argument id="uiConnectionName">
+        <argument id="Name">
+          <value class="variable">
+            <path element="BrokerData"/>
+            <path element="Name"/>
+          </value>
+        </argument>
+        <argument id="Email">
+          <value class="variable">
+            <path element="BrokerData"/>
+            <path element="Email"/>
+          </value>
+        </argument>
+        <argument id="Phone">
+          <value class="variable">
+            <path element="BrokerData"/>
+            <path element="Phone"/>
+          </value>
+        </argument>
+        <argument id="Title">
+          <value class="variable">
+            <path element="BrokerData"/>
+            <path element="Title"/>
+          </value>
+        </argument>
+        <argument id="reuseConnectionName">
           <value class="value" valueClass="string">Admin</value>
         </argument>
-        <argument id="target">
-          <value class="uiTarget" uri="sf:ui:target?object=Property__c&amp;action=New&amp;noOverride=true"/>
-        </argument>
-        <argument id="navigate">
-          <value class="value" valueClass="string">Dont</value>
-        </argument>
-        <argument id="targetDescription">
-          <value class="value" valueClass="string">On SF Property New screen</value>
-        </argument>
-        <argument id="windowSelection">
-          <value class="value" valueClass="string">Default</value>
-        </argument>
-        <argument id="windowSize">
-          <value class="value" valueClass="string">Default</value>
-        </argument>
-        <argument id="closeWindow"/>
-        <argument id="captureBefore">
-          <value class="value" valueClass="string">false</value>
-        </argument>
-        <argument id="captureAfter">
-          <value class="value" valueClass="string">false</value>
-        </argument>
-        <argument id="sfUiTargetResultName">
-          <value class="value" valueClass="string">property__cId</value>
-        </argument>
-        <argument id="sfUiTargetResultScope">
-          <value class="value" valueClass="string">Test</value>
+      </arguments>
+      <outputArguments>
+        <outputArgument id="BrokerId">
+          <name class="value" valueClass="string">BrokerId</name>
+        </outputArgument>
+      </outputArguments>
+    </caseCall>
+    <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="83" title="If: {UsingAPI}">
+      <arguments>
+        <argument argId="9e50e73e-9f35-4930-a6a4-05757cf6c998" id="condition">
+          <value class="variable">
+            <path element="UsingAPI"/>
+          </value>
         </argument>
       </arguments>
       <clauses>
-        <clause name="substeps" testItemId="11">
+        <clause name="then" testItemId="84">
           <steps>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="13" title="Set the Status picklist to {PropertyData.Status}">
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="79" title="Create via API">
               <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Status__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DStatus__c"/>
+                <argument id="description">
+                  <value class="value" valueClass="string">Create via API</value>
                 </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Status"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Status picklist to {PropertyData.Status}</value>
-                </argument>
-                <argument id="autoRetry"/>
               </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Status__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <choiceType>
-                      <constraints>
-                        <valueConstraint name="boundedValues">Contracted:Contracted|Pre Market:Pre Market|Available:Available|Under Agreement:Under Agreement|Closed:Closed</valueConstraint>
-                        <valueConstraint name="unrestricted">true</valueConstraint>
-                      </constraints>
-                    </choiceType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
+              <clauses>
+                <clause name="hidden" testItemId="80">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="74" title="Create Object: Property__c=&gt;property__cId">
+                      <arguments>
+                        <argument id="objectType">
+                          <value class="value" valueClass="string">Property__c</value>
+                        </argument>
+                        <argument id="resultIdName">
+                          <value class="value" valueClass="string">property__cId</value>
+                        </argument>
+                        <argument id="apexConnectionName">
+                          <value class="value" valueClass="string">Admin</value>
+                        </argument>
+                        <argument id="assignmentRuleId"/>
+                        <argument id="resultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                        <argument id="Name">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Name"/>
+                          </value>
+                        </argument>
+                        <argument id="Status__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Status"/>
+                          </value>
+                        </argument>
+                        <argument id="State__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="State"/>
+                          </value>
+                        </argument>
+                        <argument id="Address__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Address"/>
+                          </value>
+                        </argument>
+                        <argument id="Baths__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Baths"/>
+                          </value>
+                        </argument>
+                        <argument id="Beds__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Beds"/>
+                          </value>
+                        </argument>
+                        <argument id="Price__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="AskingPrice"/>
+                          </value>
+                        </argument>
+                        <argument id="Zip__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Zip"/>
+                          </value>
+                        </argument>
+                        <argument id="City__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="City"/>
+                          </value>
+                        </argument>
+                        <argument id="Broker__c">
+                          <value class="variable">
+                            <path element="BrokerId"/>
+                          </value>
+                        </argument>
+                        <argument id="Description__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="Description"/>
+                          </value>
+                        </argument>
+                        <argument id="Date_Listed__c">
+                          <value class="variable">
+                            <path element="PropertyData"/>
+                            <path element="DateListed"/>
+                          </value>
+                        </argument>
+                      </arguments>
+                      <parameterGeneratorProperties>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.ConnectionName">Admin</propertyValue>
+                        <propertyValue name="com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand.CustomObjectName">Property__c</propertyValue>
+                      </parameterGeneratorProperties>
+                      <generatedParameters>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Name" name="Name" title="Name"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Status__c" name="Status__c" title="Status__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=State__c" name="State__c" title="State__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Address__c" name="Address__c" title="Address__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Baths__c" name="Baths__c" title="Baths__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Beds__c" name="Beds__c" title="Beds__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Price__c" name="Price__c" title="Price__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Zip__c" name="Zip__c" title="Zip__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=City__c" name="City__c" title="City__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Broker__c" name="Broker__c" title="Broker__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Description__c" name="Description__c" title="Description__c"/>
+                        <apiParam group="fields" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Date_Listed__c" name="Date_Listed__c" title="Date_Listed__c"/>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
             </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="12" title="Set the Property Name field to {PropertyData.Name}">
+          </steps>
+        </clause>
+        <clause name="else" testItemId="89">
+          <steps>
+            <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="81" title="Create via UI">
               <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Name&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DName"/>
+                <argument id="description">
+                  <value class="value" valueClass="string">Create via UI</value>
                 </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Name"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Property Name field to {PropertyData.Name}</value>
-                </argument>
-                <argument id="autoRetry"/>
               </arguments>
-              <generatedParameters>
-                <apiParam group="value" name="value" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="14" title="Set the Address field to {PropertyData.Address}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Address__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DAddress__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Address"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Address field to {PropertyData.Address}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Address__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType>
-                      <constraints>
-                        <valueConstraint name="maxLength">100</valueConstraint>
-                        <valueConstraint name="maxLines">1</valueConstraint>
-                      </constraints>
-                    </textType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Beds field to {PropertyData.Beds}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Beds__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBeds__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Beds"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Beds field to {PropertyData.Beds}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Beds__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <numericType>
-                      <constraints>
-                        <valueConstraint name="length">2</valueConstraint>
-                        <valueConstraint name="decimalPlaces">0</valueConstraint>
-                      </constraints>
-                    </numericType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="16" title="Set the Baths field to {PropertyData.Baths}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Baths__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBaths__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Baths"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Baths field to {PropertyData.Baths}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Baths__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <numericType>
-                      <constraints>
-                        <valueConstraint name="length">2</valueConstraint>
-                        <valueConstraint name="decimalPlaces">0</valueConstraint>
-                      </constraints>
-                    </numericType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="17" title="Set the City field to {PropertyData.City}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=City__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DCity__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="City"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the City field to {PropertyData.City}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=City__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType>
-                      <constraints>
-                        <valueConstraint name="maxLength">50</valueConstraint>
-                        <valueConstraint name="maxLines">1</valueConstraint>
-                      </constraints>
-                    </textType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Asking Price field to {PropertyData.AskingPrice}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Price__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DPrice__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="AskingPrice"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Asking Price field to {PropertyData.AskingPrice}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Price__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <numericType>
-                      <constraints>
-                        <valueConstraint name="length">8</valueConstraint>
-                        <valueConstraint name="decimalPlaces">0</valueConstraint>
-                      </constraints>
-                    </numericType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="19" title="Set the State field to {PropertyData.State}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=State__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DState__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="State"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the State field to {PropertyData.State}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=State__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType>
-                      <constraints>
-                        <valueConstraint name="maxLength">20</valueConstraint>
-                        <valueConstraint name="maxLines">1</valueConstraint>
-                      </constraints>
-                    </textType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Zip field to {PropertyData.Zip}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Zip__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DZip__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Zip"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Zip field to {PropertyData.Zip}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Zip__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType>
-                      <constraints>
-                        <valueConstraint name="maxLength">10</valueConstraint>
-                        <valueConstraint name="maxLines">1</valueConstraint>
-                      </constraints>
-                    </textType>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="73" title="Set the Broker reference to Victor Ochoa">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Broker__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBroker__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="value" valueClass="string">Victor Ochoa</value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Broker reference to Victor Ochoa</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Broker__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
+              <clauses>
+                <clause name="hidden" testItemId="82">
+                  <steps>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="7" title="On SF Property Home screen">
+                      <arguments>
+                        <argument id="uiConnectionName">
+                          <value class="value" valueClass="string">Admin</value>
+                        </argument>
+                        <argument id="target">
+                          <value class="uiTarget" uri="sf:ui:target?object=Property__c&amp;action=ObjectHome"/>
+                        </argument>
+                        <argument id="navigate">
+                          <value class="value" valueClass="string">Always</value>
+                        </argument>
+                        <argument id="targetDescription">
+                          <value class="value" valueClass="string">On SF Property Home screen</value>
+                        </argument>
+                        <argument id="windowSelection">
+                          <value class="value" valueClass="string">Default</value>
+                        </argument>
+                        <argument id="windowSize">
+                          <value class="value" valueClass="string">Default</value>
+                        </argument>
+                        <argument id="closeWindow"/>
+                        <argument id="captureBefore">
+                          <value class="value" valueClass="string">false</value>
+                        </argument>
+                        <argument id="captureAfter">
+                          <value class="value" valueClass="string">false</value>
+                        </argument>
+                      </arguments>
+                      <clauses>
+                        <clause name="substeps" testItemId="8">
+                          <steps>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="9" title="Click the New button">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=New&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26action%3DNew"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=action"/>
+                                </argument>
+                                <argument id="hover">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Click the New button</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                                <argument id="ieClickMethod">
+                                  <value class="value" valueClass="string">Default</value>
+                                </argument>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" name="hover" seq="10000" title="Hover before Clicking">
+                                  <summary>Whether the mouse should hover over the field before it is clicked.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="ieClickMethod" seq="10001" title="IE Click Method">
+                                  <summary>How the click should be executed for Internet Explorer.</summary>
+                                  <type>
+                                    <choiceType>
+                                      <constraints>
+                                        <valueConstraint name="valuesSource">com.provar.core.model.base.java.EnumChoiceListValuesSource</valueConstraint>
+                                        <valueConstraint name="valuesSourceDependencies">com.provar.core.model.ui.api.ClickMethod</valueConstraint>
+                                      </constraints>
+                                    </choiceType>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                    </apiCall>
+                    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="10" title="On SF Property New screen">
+                      <arguments>
+                        <argument id="uiConnectionName">
+                          <value class="value" valueClass="string">Admin</value>
+                        </argument>
+                        <argument id="target">
+                          <value class="uiTarget" uri="sf:ui:target?object=Property__c&amp;action=New&amp;noOverride=true"/>
+                        </argument>
+                        <argument id="navigate">
+                          <value class="value" valueClass="string">Dont</value>
+                        </argument>
+                        <argument id="targetDescription">
+                          <value class="value" valueClass="string">On SF Property New screen</value>
+                        </argument>
+                        <argument id="windowSelection">
+                          <value class="value" valueClass="string">Default</value>
+                        </argument>
+                        <argument id="windowSize">
+                          <value class="value" valueClass="string">Default</value>
+                        </argument>
+                        <argument id="closeWindow"/>
+                        <argument id="captureBefore">
+                          <value class="value" valueClass="string">false</value>
+                        </argument>
+                        <argument id="captureAfter">
+                          <value class="value" valueClass="string">false</value>
+                        </argument>
+                        <argument id="sfUiTargetResultName">
+                          <value class="value" valueClass="string">property__cId</value>
+                        </argument>
+                        <argument id="sfUiTargetResultScope">
+                          <value class="value" valueClass="string">Test</value>
+                        </argument>
+                      </arguments>
+                      <clauses>
+                        <clause name="substeps" testItemId="11">
+                          <steps>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="13" title="Set the Status picklist to {PropertyData.Status}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Status__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DStatus__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Status"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Status picklist to {PropertyData.Status}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Status__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <choiceType>
+                                      <constraints>
+                                        <valueConstraint name="boundedValues">Contracted:Contracted|Pre Market:Pre Market|Available:Available|Under Agreement:Under Agreement|Closed:Closed</valueConstraint>
+                                        <valueConstraint name="unrestricted">true</valueConstraint>
+                                      </constraints>
+                                    </choiceType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="12" title="Set the Property Name field to {PropertyData.Name}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Name&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DName"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Name"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Property Name field to {PropertyData.Name}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" name="value" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="14" title="Set the Address field to {PropertyData.Address}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Address__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DAddress__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Address"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Address field to {PropertyData.Address}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Address__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType>
+                                      <constraints>
+                                        <valueConstraint name="maxLength">100</valueConstraint>
+                                        <valueConstraint name="maxLines">1</valueConstraint>
+                                      </constraints>
+                                    </textType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Beds field to {PropertyData.Beds}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Beds__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBeds__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Beds"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Beds field to {PropertyData.Beds}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Beds__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <numericType>
+                                      <constraints>
+                                        <valueConstraint name="length">2</valueConstraint>
+                                        <valueConstraint name="decimalPlaces">0</valueConstraint>
+                                      </constraints>
+                                    </numericType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="16" title="Set the Baths field to {PropertyData.Baths}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Baths__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBaths__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Baths"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Baths field to {PropertyData.Baths}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Baths__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <numericType>
+                                      <constraints>
+                                        <valueConstraint name="length">2</valueConstraint>
+                                        <valueConstraint name="decimalPlaces">0</valueConstraint>
+                                      </constraints>
+                                    </numericType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="17" title="Set the City field to {PropertyData.City}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=City__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DCity__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="City"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the City field to {PropertyData.City}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=City__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType>
+                                      <constraints>
+                                        <valueConstraint name="maxLength">50</valueConstraint>
+                                        <valueConstraint name="maxLines">1</valueConstraint>
+                                      </constraints>
+                                    </textType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Asking Price field to {PropertyData.AskingPrice}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Price__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DPrice__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="AskingPrice"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Asking Price field to {PropertyData.AskingPrice}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Price__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <numericType>
+                                      <constraints>
+                                        <valueConstraint name="length">8</valueConstraint>
+                                        <valueConstraint name="decimalPlaces">0</valueConstraint>
+                                      </constraints>
+                                    </numericType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="19" title="Set the State field to {PropertyData.State}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=State__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DState__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="State"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the State field to {PropertyData.State}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=State__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType>
+                                      <constraints>
+                                        <valueConstraint name="maxLength">20</valueConstraint>
+                                        <valueConstraint name="maxLines">1</valueConstraint>
+                                      </constraints>
+                                    </textType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Zip field to {PropertyData.Zip}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Zip__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DZip__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Zip"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Zip field to {PropertyData.Zip}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Zip__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType>
+                                      <constraints>
+                                        <valueConstraint name="maxLength">10</valueConstraint>
+                                        <valueConstraint name="maxLines">1</valueConstraint>
+                                      </constraints>
+                                    </textType>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="73" title="Set the Broker reference to {BrokerData.Name}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Broker__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBroker__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="BrokerData"/>
+                                    <path element="Name"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Broker reference to {BrokerData.Name}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Broker__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="32" title="Set the Description field to {PropertyData.Description}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Description__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DDescription__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="Description"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Description field to {PropertyData.Description}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Description__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <textType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="33" title="Set the Date Listed field to {PropertyData.DateListed}">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=Date_Listed__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DDate_Listed__c"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
+                                </argument>
+                                <argument id="value">
+                                  <value class="variable">
+                                    <path element="PropertyData"/>
+                                    <path element="DateListed"/>
+                                  </value>
+                                </argument>
+                                <argument id="blur">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="pressEnter">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">false</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Set the Date Listed field to {PropertyData.DateListed}</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Date_Listed__c" name="value" seq="10000" title="Value">
+                                  <summary>The value to be populated.</summary>
+                                  <type>
+                                    <dateType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
+                                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
+                                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="34" title="Click the Save button">
+                              <arguments>
+                                <argument id="locator">
+                                  <value class="uiLocator" uri="ui:locator?name=save&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26action%3Dsave"/>
+                                </argument>
+                                <argument id="interaction">
+                                  <value class="uiInteraction" uri="ui:interaction?name=action"/>
+                                </argument>
+                                <argument id="hover">
+                                  <value class="value" valueClass="boolean">false</value>
+                                </argument>
+                                <argument id="captureBefore">
+                                  <value class="value" valueClass="string">full</value>
+                                </argument>
+                                <argument id="captureAfter">
+                                  <value class="value" valueClass="string">true</value>
+                                </argument>
+                                <argument id="beforeWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="afterWait">
+                                  <value class="uiWait" uri="default"/>
+                                </argument>
+                                <argument id="interactionDescription">
+                                  <value class="value" valueClass="string">Click the Save button</value>
+                                </argument>
+                                <argument id="autoRetry"/>
+                                <argument id="ieClickMethod">
+                                  <value class="value" valueClass="string">Default</value>
+                                </argument>
+                              </arguments>
+                              <generatedParameters>
+                                <apiParam group="value" name="hover" seq="10000" title="Hover before Clicking">
+                                  <summary>Whether the mouse should hover over the field before it is clicked.</summary>
+                                  <type>
+                                    <booleanType/>
+                                  </type>
+                                </apiParam>
+                                <apiParam group="value" name="ieClickMethod" seq="10001" title="IE Click Method">
+                                  <summary>How the click should be executed for Internet Explorer.</summary>
+                                  <type>
+                                    <choiceType>
+                                      <constraints>
+                                        <valueConstraint name="valuesSource">com.provar.core.model.base.java.EnumChoiceListValuesSource</valueConstraint>
+                                        <valueConstraint name="valuesSourceDependencies">com.provar.core.model.ui.api.ClickMethod</valueConstraint>
+                                      </constraints>
+                                    </choiceType>
+                                  </type>
+                                </apiParam>
+                              </generatedParameters>
+                            </apiCall>
+                          </steps>
+                        </clause>
+                      </clauses>
+                      <generatedParameters>
+                        <apiParam group="result" name="sfUiTargetResultName" resultNameParameter="true" title="Result Name">
+                          <summary>The name under which the resulting Object Id will be stored.</summary>
+                          <type>
+                            <textType/>
+                          </type>
+                          <resultValueClasses>
+                            <string>ApexObjectId</string>
+                          </resultValueClasses>
+                        </apiParam>
+                        <apiParam group="result" name="sfUiTargetResultScope" title="Result Scope">
+                          <summary>The life-span of the resulting identifiers.</summary>
+                          <type>
+                            <choiceType>
+                              <constraints>
+                                <valueConstraint name="boundedValues">Global:Test Run|Folder:Test Folder|Test:Test Case|GroupStep:Group Step|Local:Test Step</valueConstraint>
+                              </constraints>
+                            </choiceType>
+                          </type>
+                        </apiParam>
+                      </generatedParameters>
+                    </apiCall>
+                  </steps>
+                </clause>
+              </clauses>
             </apiCall>
           </steps>
         </clause>
       </clauses>
-      <generatedParameters>
-        <apiParam group="result" name="sfUiTargetResultName" resultNameParameter="true" title="Result Name">
-          <summary>The name under which the resulting Object Id will be stored.</summary>
-          <type>
-            <textType/>
-          </type>
-          <resultValueClasses>
-            <string>ApexObjectId</string>
-          </resultValueClasses>
-        </apiParam>
-        <apiParam group="result" name="sfUiTargetResultScope" title="Result Scope">
-          <summary>The life-span of the resulting identifiers.</summary>
-          <type>
-            <choiceType>
-              <constraints>
-                <valueConstraint name="boundedValues">Global:Test Run|Folder:Test Folder|Test:Test Case|GroupStep:Group Step|Local:Test Step</valueConstraint>
-              </constraints>
-            </choiceType>
-          </type>
-        </apiParam>
-      </generatedParameters>
-    </apiCall>
-    <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="29" title="On SF Property New screen">
-      <arguments>
-        <argument id="uiConnectionName">
-          <value class="value" valueClass="string">Admin</value>
-        </argument>
-        <argument id="target">
-          <value class="uiTarget" uri="sf:ui:target?object=Property__c&amp;action=New&amp;noOverride=true"/>
-        </argument>
-        <argument id="navigate">
-          <value class="value" valueClass="string">Dont</value>
-        </argument>
-        <argument id="targetDescription">
-          <value class="value" valueClass="string">On SF Property New screen</value>
-        </argument>
-        <argument id="windowSelection">
-          <value class="value" valueClass="string">Default</value>
-        </argument>
-        <argument id="windowSize">
-          <value class="value" valueClass="string">Default</value>
-        </argument>
-        <argument id="closeWindow"/>
-        <argument id="captureBefore">
-          <value class="value" valueClass="string">false</value>
-        </argument>
-        <argument id="captureAfter">
-          <value class="value" valueClass="string">false</value>
-        </argument>
-        <argument id="sfUiTargetResultName">
-          <value class="value" valueClass="string">property__cId</value>
-        </argument>
-        <argument id="sfUiTargetResultScope">
-          <value class="value" valueClass="string">Test</value>
-        </argument>
-      </arguments>
-      <clauses>
-        <clause name="substeps" testItemId="30">
-          <steps>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="32" title="Set the Description field to {PropertyData.Description}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Description__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DDescription__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="Description"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Description field to {PropertyData.Description}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Description__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <textType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="33" title="Set the Date Listed field to {PropertyData.DateListed}">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=Date_Listed__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DDate_Listed__c"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=set"/>
-                </argument>
-                <argument id="value">
-                  <value class="variable">
-                    <path element="PropertyData"/>
-                    <path element="DateListed"/>
-                  </value>
-                </argument>
-                <argument id="blur">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="pressEnter">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">false</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Set the Date Listed field to {PropertyData.DateListed}</value>
-                </argument>
-                <argument id="autoRetry"/>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Date_Listed__c" name="value" seq="10000" title="Value">
-                  <summary>The value to be populated.</summary>
-                  <type>
-                    <dateType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="blur" seq="10001" title="Tab off field">
-                  <summary>Whether the tab key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="pressEnter" seq="10002" title="Press Enter">
-                  <summary>Whether the Enter key should be pressed after the value is populated.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-            <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="34" title="Click the Save button">
-              <arguments>
-                <argument id="locator">
-                  <value class="uiLocator" uri="ui:locator?name=save&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26action%3Dsave"/>
-                </argument>
-                <argument id="interaction">
-                  <value class="uiInteraction" uri="ui:interaction?name=action"/>
-                </argument>
-                <argument id="hover">
-                  <value class="value" valueClass="boolean">false</value>
-                </argument>
-                <argument id="captureBefore">
-                  <value class="value" valueClass="string">full</value>
-                </argument>
-                <argument id="captureAfter">
-                  <value class="value" valueClass="string">true</value>
-                </argument>
-                <argument id="beforeWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="afterWait">
-                  <value class="uiWait" uri="default"/>
-                </argument>
-                <argument id="interactionDescription">
-                  <value class="value" valueClass="string">Click the Save button</value>
-                </argument>
-                <argument id="autoRetry"/>
-                <argument id="ieClickMethod">
-                  <value class="value" valueClass="string">Default</value>
-                </argument>
-              </arguments>
-              <generatedParameters>
-                <apiParam group="value" name="hover" seq="10000" title="Hover before Clicking">
-                  <summary>Whether the mouse should hover over the field before it is clicked.</summary>
-                  <type>
-                    <booleanType/>
-                  </type>
-                </apiParam>
-                <apiParam group="value" name="ieClickMethod" seq="10001" title="IE Click Method">
-                  <summary>How the click should be executed for Internet Explorer.</summary>
-                  <type>
-                    <choiceType>
-                      <constraints>
-                        <valueConstraint name="valuesSource">com.provar.core.model.base.java.EnumChoiceListValuesSource</valueConstraint>
-                        <valueConstraint name="valuesSourceDependencies">com.provar.core.model.ui.api.ClickMethod</valueConstraint>
-                      </constraints>
-                    </choiceType>
-                  </type>
-                </apiParam>
-              </generatedParameters>
-            </apiCall>
-          </steps>
-        </clause>
-      </clauses>
-      <generatedParameters>
-        <apiParam group="result" name="sfUiTargetResultName" resultNameParameter="true" title="Result Name">
-          <summary>The name under which the resulting Object Id will be stored.</summary>
-          <type>
-            <textType/>
-          </type>
-          <resultValueClasses>
-            <string>ApexObjectId</string>
-          </resultValueClasses>
-        </apiParam>
-        <apiParam group="result" name="sfUiTargetResultScope" title="Result Scope">
-          <summary>The life-span of the resulting identifiers.</summary>
-          <type>
-            <choiceType>
-              <constraints>
-                <valueConstraint name="boundedValues">Global:Test Run|Folder:Test Folder|Test:Test Case|GroupStep:Group Step|Local:Test Step</valueConstraint>
-              </constraints>
-            </choiceType>
-          </type>
-        </apiParam>
-      </generatedParameters>
     </apiCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="43" title="Validate Fields via API">
       <arguments>
@@ -1264,6 +1419,19 @@
       </clauses>
     </apiCall>
   </steps>
+  <params>
+    <param linkedToUrl="provar:hasvalue:9e50e73e-9f35-4930-a6a4-05757cf6c998" name="UsingAPI" title="UsingAPI">
+      <summary>The condition that is tested.\r\n\r\nIf it evaluates to true then the Then steps are executed, otherwise any Else steps.</summary>
+      <type>
+        <conditionType nullable="false"/>
+      </type>
+    </param>
+  </params>
+  <args>
+    <argument id="UsingAPI">
+      <value class="value" valueClass="boolean">true</value>
+    </argument>
+  </args>
   <associations>
     <association assocationType="TM.TEST_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0R8d0000042W6dEAE"/>
   </associations>
