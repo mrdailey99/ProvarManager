@@ -197,6 +197,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Phone__c</field>
+            <value>
+                <elementReference>property_phone</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Price__c</field>
             <value>
                 <elementReference>property_price</elementReference>
@@ -462,6 +468,13 @@
             <fieldText>Property Name</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>property_phone</name>
+            <dataType>Phone</dataType>
+            <fieldText>Property Phone</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
         </fields>
         <fields>
             <name>property_description</name>
