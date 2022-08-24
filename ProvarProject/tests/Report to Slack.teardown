@@ -79,7 +79,13 @@
                 </argument>
                 <argument id="restRequestHeader"/>
                 <argument id="restBody">
-                  <value class="value" valueClass="string">{\n\t"username": "Provar Automation",\n\t"channel": "#test-results",\n\t"icon_emoji": ":provar:",\n\t"text": "Regression Test Completed Successfully"\n\t}</value>
+                  <value class="compound">
+                    <parts>
+                      <value valueClass="string">{\n\t"username": "Provar Automation",\n\t"channel": "#test-results",\n\t"icon_emoji": ":provar:",\n\t"text": "Regression Test Completed Successfully in </value>
+                      <funcCall id="GetSelectedEnvironment"/>
+                      <value valueClass="string">"\n\t}</value>
+                    </parts>
+                  </value>
                 </argument>
                 <argument id="restAttachments">
                   <value class="valueList" mutable="Mutable"/>
