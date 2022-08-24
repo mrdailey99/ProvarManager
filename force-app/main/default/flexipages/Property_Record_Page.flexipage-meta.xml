@@ -57,6 +57,16 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
+                    <value>required</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Phone__c</fieldItem>
+                <identifier>RecordPhone__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Address__c</fieldItem>
