@@ -3,7 +3,7 @@
     <fullName>Email__c</fullName>
     <externalId>false</externalId>
     <label>Email</label>
-    <length>25</length>
+    <length>20</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
