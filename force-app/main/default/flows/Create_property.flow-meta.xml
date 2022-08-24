@@ -471,7 +471,7 @@
         </fields>
         <fields>
             <name>property_phone</name>
-            <dataType>Phone</dataType>
+            <dataType>String</dataType>
             <fieldText>Property Phone</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
