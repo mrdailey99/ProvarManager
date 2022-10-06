@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testCase registryId="d19fcaef-196d-44a6-863f-b1b506d8a640" visibility="Internal">
+<testCase id="1" registryId="d19fcaef-196d-44a6-863f-b1b506d8a640" visibility="Internal">
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
@@ -174,6 +174,17 @@
         </connectionType>
       </type>
     </param>
+    <param name="Status" title="Status">
+      <summary/>
+      <type>
+        <textType>
+          <constraints>
+            <valueConstraint name="minLength">0</valueConstraint>
+            <valueConstraint name="maxLength">9999</valueConstraint>
+          </constraints>
+        </textType>
+      </type>
+    </param>
   </params>
   <outputParams>
     <param name="BrokerId" title="BrokerId">
@@ -249,6 +260,9 @@
       <value class="value" valueClass="string">Real Estate Broker</value>
     </argument>
     <argument id="reuseConnectionName"/>
+    <argument id="Status">
+      <value class="value" valueClass="string">Available</value>
+    </argument>
   </args>
   <outputArgs>
     <outputArgument id="BrokerId">
