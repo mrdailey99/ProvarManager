@@ -1,21 +1,21 @@
 {
   "orgName": "Dreamhouse",
   "edition": "Developer",
-  "features": ["Walkthroughs", "EnableSetPasswordInApi"],
+  "features": ["EnableSetPasswordInApi"],
   "settings": {
       "lightningExperienceSettings": {
           "enableS1DesktopEnabled": true
       },
       "mobileSettings": {
-          "enableS1EncryptedStoragePref2": true
+          "enableS1EncryptedStoragePref2": false
       },
       "securitySettings": {
         "networkAccess": {
             "ipRanges": [
               {
                 "description": "Dynamic Agent IP",
-                "start": "IP_WHITELIST",
-                "end": "IP_WHITELIST" 
+                "start": "107.208.105.189",
+                "end": "107.208.105.189" 
               }
             ]
         },
