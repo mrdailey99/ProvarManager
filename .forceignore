@@ -10,6 +10,7 @@ package.xml
 **/objectTranslations/**
 **/profiles/**
 **/settings/**
+**/prompts/**
 
 # LWC configuration files
 **/jsconfig.json
