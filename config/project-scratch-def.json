@@ -14,8 +14,8 @@
             "ipRanges": [
               {
                 "description": "Dynamic Agent IP",
-                "start": "107.208.105.189",
-                "end": "107.208.105.189" 
+                "start": "IP_WHITELIST",
+                "end": "IP_WHITELIST" 
               }
             ]
         },
