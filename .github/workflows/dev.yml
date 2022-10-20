@@ -7,7 +7,7 @@ name: Regression
 on:
   workflow_dispatch:
   repository_dispatch:
-    event_types: [provar_regression]
+    event_types: [dev]
   pull_request:
     branches:
       - UAT
