@@ -6,6 +6,8 @@ name: Regression
 # events but only for the master branch
 on:
   workflow_dispatch:
+  repository_dispatch:
+    event_types: [provar_regression]
   pull_request:
     branches:
       - UAT
