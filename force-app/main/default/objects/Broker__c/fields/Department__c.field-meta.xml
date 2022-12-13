@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Department__c</fullName>
     <externalId>false</externalId>
@@ -8,11 +8,11 @@
     <type>Picklist</type>
     <valueSet>
         <valueSetDefinition>
-            <sorted>true</sorted>
+            <sorted>false</sorted>
             <value>
-                <fullName>Sales</fullName>
+                <fullName>Administration</fullName>
                 <default>false</default>
-                <label>Sales</label>
+                <label>Administration</label>
             </value>
             <value>
                 <fullName>Marketing</fullName>
@@ -20,9 +20,9 @@
                 <label>Marketing</label>
             </value>
             <value>
-                <fullName>Administration</fullName>
+                <fullName>Sales</fullName>
                 <default>false</default>
-                <label>Administration</label>
+                <label>Sales</label>
             </value>
         </valueSetDefinition>
     </valueSet>
