@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Status__c</fullName>
+    <fullName>Department__c</fullName>
     <externalId>false</externalId>
-    <label>Status</label>
+    <label>Department</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -10,14 +10,19 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>Available</fullName>
+                <fullName>Administration</fullName>
                 <default>false</default>
-                <label>Available</label>
+                <label>Administration</label>
             </value>
             <value>
-                <fullName>Unavailable</fullName>
+                <fullName>Marketing</fullName>
                 <default>false</default>
-                <label>Unavailable</label>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Sales</fullName>
+                <default>false</default>
+                <label>Sales</label>
             </value>
         </valueSetDefinition>
     </valueSet>
