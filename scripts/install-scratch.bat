@@ -38,7 +38,7 @@ rem Report install success if no error
 if ["%errorlevel%"]==["0"] (
   echo Installation completed.
   @echo:
-  cmd.exe /c sfdx force:org:open -u %ORG_ALIAS% o-p lightning/n/Property_Explorer
+  cmd.exe /c sfdx force:org:open -u %ORG_ALIAS% -p lightning/n/Property_Explorer
 )
 
 :: ======== FN ======
