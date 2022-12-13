@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testProject secretsEncryption="JASYPT" selectedBrowserConfigurationName="Full Screen" selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="DEV">
+<testProject secretsEncryption="JASYPT" selectedBrowserConfigurationName="Full Screen" selectedBrowserProviderDeviceName="Full Screen" selectedBrowserProviderName="Desktop" selectedEnvironment="Scratch">
   <title>/ProvarProject/.testproject</title>
   <configPath>config</configPath>
   <testsPath>tests</testsPath>
@@ -56,7 +56,7 @@
             <connectionUrl envName="UAT" secureStorageNodeId="61ec5587-d28b-426f-82b0-450273197106" url="sf:user=michael.dailey@devops.center;password={password};environment=PROD_DEV;lightningMode=true"/>
             <connectionUrl envName="Production" secureStorageNodeId="299eff26-605b-4d09-81fa-77972ddf4583" url="sf:user=demo@provartesting.com;password={password};environment=PROD_DEV;lightningMode=true"/>
             <connectionUrl envName="DEV" secureStorageNodeId="a3bb501c-f9a0-432a-b137-266c1b4bab54" url="sf:user=michael.dailey@brave-otter-7uycux.com;password={password};environment=PROD_DEV;lightningMode=true"/>
-            <connectionUrl envName="Scratch" secureStorageNodeId="be1e9c7c-8b03-4dca-b5bd-a9045bff24de" url="sf:user=test-mrr9d5zrmnep@example.com;password={password};environment=SANDBOX;identityServiceUrl=https://login.salesforce.com/id/00D3k000000vD06EAE/0053k00000AY9yBAAT;lightningMode=true"/>
+            <connectionUrl envName="Scratch" secureStorageNodeId="be1e9c7c-8b03-4dca-b5bd-a9045bff24de" url="sf:user=test-pma7uuafhtcd@example.com;password={password};securityToken={securityToken};environment=SANDBOX;identityServiceUrl=https://login.salesforce.com/id/00D3k000000vD06EAE/0053k00000AY9yBAAT;lightningMode=true"/>
           </connectionUrls>
         </connection>
       </connections>

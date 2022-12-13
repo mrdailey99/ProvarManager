@@ -10,15 +10,6 @@
           "enableS1EncryptedStoragePref2": false
       },
       "securitySettings": {
-        "networkAccess": {
-            "ipRanges": [
-              {
-                "description": "Dynamic Agent IP",
-                "start": "IP_WHITELIST",
-                "end": "IP_WHITELIST" 
-              }
-            ]
-        },
         "sessionSettings": {
           "enforceIpRangesEveryRequest": false
         }
