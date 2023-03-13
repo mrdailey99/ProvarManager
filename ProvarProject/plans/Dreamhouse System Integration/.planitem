@@ -86,8 +86,9 @@
         </namedValue>
       </settings>
     </planFeature>
+    <planFeature connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" enabled="true" name="TEST_MANAGER" type="REPORTING">
+      <settings mutable="Mutable"/>
+    </planFeature>
   </planFeatures>
-  <associations>
-    <association assocationType="TM.TEST_PLAN" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0e26000002ycwIAAQ"/>
-  </associations>
+  <associations/>
 </testPlan>
