@@ -3,6 +3,9 @@
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeEAAQ"/>
+      </associations>
       <arguments>
         <argument id="connectionName">
           <value class="value" valueClass="string">Admin</value>
@@ -50,6 +53,9 @@
       </arguments>
     </apiCall>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="3" title="Create Object: Broker__c=&gt;BrokerId">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeFAAQ"/>
+      </associations>
       <arguments>
         <argument id="objectType">
           <value class="value" valueClass="string">Broker__c</value>
@@ -97,6 +103,9 @@
       </generatedParameters>
     </apiCall>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="4" title="Read Object: Broker__c = {BrokerId}">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeGAAQ"/>
+      </associations>
       <arguments>
         <argument id="objectType">
           <value class="value" valueClass="string">Broker__c</value>
@@ -151,19 +160,19 @@
     </apiCall>
   </steps>
   <params>
-    <param linkedToUrl="provar:hasvalue:2cfc87e1-2cc5-426e-8d41-f32680a9dd46" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Name" name="Name" title="Name">
+    <param linkedToUrl="provar:hasvalue:2cfc87e1-2cc5-426e-8d41-f32680a9dd46" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Name" name="Name" passwordVariableAllowed="true" title="Name">
       <summary/>
     </param>
-    <param linkedToUrl="provar:hasvalue:9ebca087-13b8-4d1f-adce-a607488af929" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Email__c" name="Email" title="Email">
+    <param linkedToUrl="provar:hasvalue:9ebca087-13b8-4d1f-adce-a607488af929" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Email__c" name="Email" passwordVariableAllowed="true" title="Email">
       <summary>\t</summary>
     </param>
-    <param linkedToUrl="provar:hasvalue:c0b5776b-322a-4171-b2a0-ba34a9b22f08" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Phone__c" name="Phone" title="Phone">
+    <param linkedToUrl="provar:hasvalue:c0b5776b-322a-4171-b2a0-ba34a9b22f08" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Phone__c" name="Phone" passwordVariableAllowed="true" title="Phone">
       <summary/>
     </param>
-    <param linkedToUrl="provar:hasvalue:2811ce6b-8108-46ed-abec-2b7dd31a10f5" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Title__c" name="Title" title="Title">
+    <param linkedToUrl="provar:hasvalue:2811ce6b-8108-46ed-abec-2b7dd31a10f5" modelBinding="sf:ui:binding:object?object=Broker__c&amp;field=Title__c" name="Title" passwordVariableAllowed="true" title="Title">
       <summary/>
     </param>
-    <param linkedToUrl="provar:hasvalue:0430b980-5786-43ff-b900-f149c9d43a87" name="reuseConnectionName" title="Override Connection">
+    <param linkedToUrl="provar:hasvalue:0430b980-5786-43ff-b900-f149c9d43a87" name="reuseConnectionName" passwordVariableAllowed="true" title="Override Connection">
       <summary>The name of an already opened connect to re-use.</summary>
       <type>
         <connectionType>
@@ -174,7 +183,7 @@
         </connectionType>
       </type>
     </param>
-    <param name="Status" title="Status">
+    <param name="Status" passwordVariableAllowed="true" title="Status">
       <summary/>
       <type>
         <textType>
@@ -187,7 +196,7 @@
     </param>
   </params>
   <outputParams>
-    <param name="BrokerId" title="BrokerId">
+    <param name="BrokerId" passwordVariableAllowed="true" title="BrokerId">
       <summary>The name under which the resulting Object Id will be stored.</summary>
       <type>
         <textType>
@@ -270,6 +279,6 @@
     </outputArgument>
   </outputArgs>
   <associations>
-    <association assocationType="TM.TEST_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0R8d0000042eepEAA"/>
+    <association assocationType="TM.TEST_CASE" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0T2600000DVYyIEAX" lastUploadedDateTime="2023-03-13T15:38:49Z"/>
   </associations>
 </testCase>

@@ -3,6 +3,9 @@
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjePAAQ"/>
+      </associations>
       <arguments>
         <argument id="connectionName">
           <value class="value" valueClass="string">Admin</value>
@@ -46,6 +49,9 @@
       </arguments>
     </apiCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="13" title="Create and Convert Lead">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeQAAQ"/>
+      </associations>
       <arguments>
         <argument id="description">
           <value class="value" valueClass="string">Create and Convert Lead</value>
@@ -55,6 +61,9 @@
         <clause name="hidden" testItemId="14">
           <steps>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="5" title="Create Object: Lead=&gt;LeadId">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeSAAQ"/>
+              </associations>
               <arguments>
                 <argument id="objectType">
                   <value class="value" valueClass="string">Lead</value>
@@ -96,6 +105,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="17" title="If: {GetSelectedEnvironment() = &quot;Production&quot;}">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeTAAQ"/>
+              </associations>
               <arguments>
                 <argument id="condition">
                   <value class="eq">
@@ -108,6 +120,9 @@
                 <clause name="then" testItemId="18">
                   <steps>
                     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConvertLead" name="ApexConvertLead" testItemId="20" title="Convert Lead:  =&gt; //">
+                      <associations>
+                        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjekAAA"/>
+                      </associations>
                       <arguments>
                         <argument id="apexConnectionName">
                           <value class="value" valueClass="string">Admin</value>
@@ -152,10 +167,16 @@
                       </arguments>
                     </apiCall>
                   </steps>
+                  <associations>
+                    <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeYAAQ"/>
+                  </associations>
                 </clause>
                 <clause name="else" testItemId="19">
                   <steps>
                     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConvertLead" name="ApexConvertLead" testItemId="21" title="Convert Lead:  =&gt; //">
+                      <associations>
+                        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjelAAA"/>
+                      </associations>
                       <arguments>
                         <argument id="apexConnectionName">
                           <value class="value" valueClass="string">Admin</value>
@@ -200,6 +221,9 @@
                       </arguments>
                     </apiCall>
                   </steps>
+                  <associations>
+                    <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeZAAQ"/>
+                  </associations>
                 </clause>
               </clauses>
             </apiCall>
@@ -208,6 +232,9 @@
       </clauses>
     </apiCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="15" title="Validate Account, Contact, and Opp">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeRAAQ"/>
+      </associations>
       <arguments>
         <argument id="description">
           <value class="value" valueClass="string">Validate Account, Contact, and Opp</value>
@@ -217,6 +244,9 @@
         <clause name="hidden" testItemId="16">
           <steps>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="22" title="On SF Account View screen">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeUAAQ"/>
+              </associations>
               <arguments>
                 <argument id="uiConnectionName">
                   <value class="value" valueClass="string">Admin</value>
@@ -262,6 +292,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="7" title="Read Object: Account = {convertedAccountId}">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeVAAQ"/>
+              </associations>
               <arguments>
                 <argument id="objectType">
                   <value class="value" valueClass="string">Account</value>
@@ -297,6 +330,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="8" title="Read Object: Contact = {convertedContactId}">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeWAAQ"/>
+              </associations>
               <arguments>
                 <argument id="objectType">
                   <value class="value" valueClass="string">Contact</value>
@@ -338,6 +374,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="9" title="Read Object: Opportunity = {convertedOpportunityId}">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeXAAQ"/>
+              </associations>
               <arguments>
                 <argument id="objectType">
                   <value class="value" valueClass="string">Opportunity</value>
@@ -378,16 +417,16 @@
     </apiCall>
   </steps>
   <params>
-    <param linkedToUrl="provar:hasvalue:d8462088-cc18-474d-aeb7-958ae209a917" modelBinding="sf:ui:binding:object?object=Lead&amp;field=FirstName" name="FirstName" title="FirstName">
+    <param linkedToUrl="provar:hasvalue:d8462088-cc18-474d-aeb7-958ae209a917" modelBinding="sf:ui:binding:object?object=Lead&amp;field=FirstName" name="FirstName" passwordVariableAllowed="true" title="FirstName">
       <summary/>
     </param>
-    <param linkedToUrl="provar:hasvalue:45dbd5a4-9f0e-4be1-88fb-5daea1c1010c" modelBinding="sf:ui:binding:object?object=Lead&amp;field=LastName" name="LastName" title="LastName">
+    <param linkedToUrl="provar:hasvalue:45dbd5a4-9f0e-4be1-88fb-5daea1c1010c" modelBinding="sf:ui:binding:object?object=Lead&amp;field=LastName" name="LastName" passwordVariableAllowed="true" title="LastName">
       <summary/>
     </param>
-    <param linkedToUrl="provar:hasvalue:58fbebbc-c34f-4f1e-8450-d814f424b48f" modelBinding="sf:ui:binding:object?object=Lead&amp;field=Company" name="Company" title="Company">
+    <param linkedToUrl="provar:hasvalue:58fbebbc-c34f-4f1e-8450-d814f424b48f" modelBinding="sf:ui:binding:object?object=Lead&amp;field=Company" name="Company" passwordVariableAllowed="true" title="Company">
       <summary/>
     </param>
-    <param linkedToUrl="provar:hasvalue:da90a820-8d21-42a1-8b58-8bf1b82622be" name="OpportunityName" title="Opportunity Name">
+    <param linkedToUrl="provar:hasvalue:da90a820-8d21-42a1-8b58-8bf1b82622be" name="OpportunityName" passwordVariableAllowed="true" title="Opportunity Name">
       <summary>Name of the opportunity to create.</summary>
       <type>
         <textType>
@@ -436,6 +475,6 @@
     </argument>
   </args>
   <associations>
-    <association assocationType="TM.TEST_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0R8d0000042W6YEAU"/>
+    <association assocationType="TM.TEST_CASE" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0T2600000DVYy8EAH" lastUploadedDateTime="2023-03-13T15:38:49Z"/>
   </associations>
 </testCase>

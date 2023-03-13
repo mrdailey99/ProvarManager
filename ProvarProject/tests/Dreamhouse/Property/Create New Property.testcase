@@ -3,6 +3,9 @@
   <summary/>
   <steps>
     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexConnect" name="ApexConnect" testItemId="1" title="Salesforce Connect: Admin (Test)">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeJAAQ"/>
+      </associations>
       <arguments>
         <argument id="connectionName">
           <value class="value" valueClass="string">Admin</value>
@@ -46,6 +49,9 @@
       </arguments>
     </apiCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" isTitleUpdated="true" name="StepGroup" testItemId="2" title="Read Property Data from Excel">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeKAAQ"/>
+      </associations>
       <arguments>
         <argument id="description">
           <value class="value" valueClass="string">Read Test Data from Excel</value>
@@ -85,6 +91,9 @@
       </clauses>
     </apiCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="77" title="Read Broker Data from Excel">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeLAAQ"/>
+      </associations>
       <arguments>
         <argument id="description">
           <value class="value" valueClass="string">Read Broker Data from Excel</value>
@@ -112,6 +121,9 @@
       </clauses>
     </apiCall>
     <caseCall testCaseId="d19fcaef-196d-44a6-863f-b1b506d8a640" testCasePath="tests/Dreamhouse/Broker/Create Broker.testcase" testItemId="75">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeMAAQ"/>
+      </associations>
       <arguments>
         <argument id="Name">
           <value class="variable">
@@ -148,6 +160,9 @@
       </outputArguments>
     </caseCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.If" name="If" testItemId="83" title="If: {UsingAPI}">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeNAAQ"/>
+      </associations>
       <arguments>
         <argument argId="9e50e73e-9f35-4930-a6a4-05757cf6c998" id="condition">
           <value class="variable">
@@ -159,6 +174,9 @@
         <clause name="then" testItemId="84">
           <steps>
             <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="79" title="Create via API">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeeAAA"/>
+              </associations>
               <arguments>
                 <argument id="description">
                   <value class="value" valueClass="string">Create via API</value>
@@ -168,6 +186,9 @@
                 <clause name="hidden" testItemId="80">
                   <steps>
                     <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexCreateObject" name="ApexCreateObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.CreateCustomObjectTestStepCommand" testItemId="74" title="Create Object: Property__c=&gt;property__cId">
+                      <associations>
+                        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjegAAA"/>
+                      </associations>
                       <arguments>
                         <argument id="objectType">
                           <value class="value" valueClass="string">Property__c</value>
@@ -278,10 +299,16 @@
               </clauses>
             </apiCall>
           </steps>
+          <associations>
+            <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeaAAA"/>
+          </associations>
         </clause>
         <clause name="else" testItemId="89">
           <steps>
             <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="81" title="Create via UI">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjefAAA"/>
+              </associations>
               <arguments>
                 <argument id="description">
                   <value class="value" valueClass="string">Create via UI</value>
@@ -291,6 +318,9 @@
                 <clause name="hidden" testItemId="82">
                   <steps>
                     <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="7" title="On SF Property Home screen">
+                      <associations>
+                        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjehAAA"/>
+                      </associations>
                       <arguments>
                         <argument id="uiConnectionName">
                           <value class="value" valueClass="string">Admin</value>
@@ -322,6 +352,9 @@
                         <clause name="substeps" testItemId="8">
                           <steps>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="9" title="Click the New button">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjejAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=New&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26action%3DNew"/>
@@ -377,6 +410,9 @@
                       </clauses>
                     </apiCall>
                     <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiWithScreen" name="UiWithScreen" testItemId="10" title="On SF Property New screen">
+                      <associations>
+                        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeiAAA"/>
+                      </associations>
                       <arguments>
                         <argument id="uiConnectionName">
                           <value class="value" valueClass="string">Admin</value>
@@ -414,6 +450,9 @@
                         <clause name="substeps" testItemId="11">
                           <steps>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="13" title="Set the Status picklist to {PropertyData.Status}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjepAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Status__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DStatus__c"/>
@@ -477,6 +516,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="12" title="Set the Property Name field to {PropertyData.Name}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeqAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Name&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DName"/>
@@ -514,7 +556,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" name="value" title="Value">
+                                <apiParam group="value" name="value" passwordVariableAllowed="true" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <textType/>
@@ -535,6 +577,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="14" title="Set the Address field to {PropertyData.Address}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjerAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Address__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DAddress__c"/>
@@ -572,7 +617,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Address__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Address__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <textType>
@@ -598,6 +643,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="15" title="Set the Beds field to {PropertyData.Beds}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjesAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Beds__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBeds__c"/>
@@ -635,7 +683,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Beds__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Beds__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <numericType>
@@ -661,6 +709,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="16" title="Set the Baths field to {PropertyData.Baths}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjetAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Baths__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBaths__c"/>
@@ -698,7 +749,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Baths__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Baths__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <numericType>
@@ -724,6 +775,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="17" title="Set the City field to {PropertyData.City}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeuAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=City__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DCity__c"/>
@@ -761,7 +815,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=City__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=City__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <textType>
@@ -787,6 +841,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="18" title="Set the Asking Price field to {PropertyData.AskingPrice}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjevAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Price__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DPrice__c"/>
@@ -824,7 +881,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Price__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Price__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <numericType>
@@ -850,6 +907,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="19" title="Set the State field to {PropertyData.State}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjewAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=State__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DState__c"/>
@@ -913,6 +973,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="20" title="Set the Zip field to {PropertyData.Zip}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjexAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Zip__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DZip__c"/>
@@ -950,7 +1013,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Zip__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Zip__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <textType>
@@ -976,6 +1039,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="73" title="Set the Broker reference to {BrokerData.Name}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeyAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Broker__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DBroker__c"/>
@@ -1034,6 +1100,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="32" title="Set the Description field to {PropertyData.Description}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjezAAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Description__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DDescription__c"/>
@@ -1092,6 +1161,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="33" title="Set the Date Listed field to {PropertyData.DateListed}">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjf0AAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=Date_Listed__c&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26field%3DDate_Listed__c"/>
@@ -1129,7 +1201,7 @@
                                 <argument id="autoRetry"/>
                               </arguments>
                               <generatedParameters>
-                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Date_Listed__c" name="value" seq="10000" title="Value">
+                                <apiParam group="value" modelBinding="sf:ui:binding:object?object=Property__c&amp;field=Date_Listed__c" name="value" passwordVariableAllowed="true" seq="10000" title="Value">
                                   <summary>The value to be populated.</summary>
                                   <type>
                                     <dateType/>
@@ -1150,6 +1222,9 @@
                               </generatedParameters>
                             </apiCall>
                             <apiCall apiId="com.provar.plugins.forcedotcom.core.ui.UiDoAction" name="UiDoAction" testItemId="34" title="Click the Save button">
+                              <associations>
+                                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjf1AAA"/>
+                              </associations>
                               <arguments>
                                 <argument id="locator">
                                   <value class="uiLocator" uri="ui:locator?name=save&amp;binding=sf%3Aui%3Abinding%3Aobject%3Fobject%3DProperty__c%26action%3Dsave"/>
@@ -1230,10 +1305,16 @@
               </clauses>
             </apiCall>
           </steps>
+          <associations>
+            <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjebAAA"/>
+          </associations>
         </clause>
       </clauses>
     </apiCall>
     <apiCall apiId="com.provar.plugins.bundled.apis.control.StepGroup" name="StepGroup" testItemId="43" title="Validate Fields via API">
+      <associations>
+        <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjeOAAQ"/>
+      </associations>
       <arguments>
         <argument id="description">
           <value class="value" valueClass="string">Validate Fields via API</value>
@@ -1243,6 +1324,9 @@
         <clause name="hidden" testItemId="44">
           <steps>
             <apiCall apiId="com.provar.plugins.forcedotcom.core.testapis.ApexReadObject" name="ApexReadObject" parameterGeneratorUri="command:com.provar.plugins.forcedotcom.ui.commands.ReadCustomObjectTestStepCommand" testItemId="38" title="Read Object: Property__c = {property__cId}">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjecAAA"/>
+              </associations>
               <arguments>
                 <argument id="objectType">
                   <value class="value" valueClass="string">Property__c</value>
@@ -1347,6 +1431,9 @@
               </generatedParameters>
             </apiCall>
             <apiCall apiId="com.provar.plugins.bundled.apis.AssertValues" isTitleUpdated="true" name="AssertValues" testItemId="52" title="Assert: Validate Days on Market for Property">
+              <associations>
+                <association assocationType="TM.TEST_STEP" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0j26000005yjedAAA"/>
+              </associations>
               <arguments>
                 <argument id="expectedValue">
                   <value class="funcCall" id="DateFormat">
@@ -1420,7 +1507,7 @@
     </apiCall>
   </steps>
   <params>
-    <param linkedToUrl="provar:hasvalue:9e50e73e-9f35-4930-a6a4-05757cf6c998" name="UsingAPI" title="UsingAPI">
+    <param linkedToUrl="provar:hasvalue:9e50e73e-9f35-4930-a6a4-05757cf6c998" name="UsingAPI" passwordVariableAllowed="true" title="UsingAPI">
       <summary>The condition that is tested.\r\n\r\nIf it evaluates to true then the Then steps are executed, otherwise any Else steps.</summary>
       <type>
         <conditionType nullable="false"/>
@@ -1433,6 +1520,6 @@
     </argument>
   </args>
   <associations>
-    <association assocationType="TM.TEST_CASE" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0R8d0000042W6dEAE"/>
+    <association assocationType="TM.TEST_CASE" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0T2600000DVYyDEAX" lastUploadedDateTime="2023-03-13T15:38:50Z"/>
   </associations>
 </testCase>

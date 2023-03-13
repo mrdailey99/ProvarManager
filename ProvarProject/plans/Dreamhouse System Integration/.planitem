@@ -73,10 +73,10 @@
     <planFeature enabled="true" name="EMAIL" type="NOTIFICATION">
       <settings mutable="Mutable">
         <namedValue name="to">
-          <value class="value" valueClass="string"/>
+          <value class="value"/>
         </namedValue>
         <namedValue name="cc">
-          <value class="value" valueClass="string"/>
+          <value class="value"/>
         </namedValue>
         <namedValue name="subject">
           <value class="value" valueClass="string">Test Plan Execution</value>
@@ -86,11 +86,8 @@
         </namedValue>
       </settings>
     </planFeature>
-    <planFeature connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" enabled="true" name="TEST_MANAGER" type="REPORTING">
-      <settings mutable="Mutable"/>
-    </planFeature>
   </planFeatures>
   <associations>
-    <association assocationType="TM.TEST_PLAN" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0X8d000000uPctEAE"/>
+    <association assocationType="TM.TEST_PLAN" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0e26000002ycwIAAQ"/>
   </associations>
 </testPlan>

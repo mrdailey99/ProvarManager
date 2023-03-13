@@ -10,26 +10,22 @@
   <environments>
     <environment name="UAT">
       <summary>User Acceptance testing</summary>
-      <associations>
-        <association assocationType="TM.ENVIRONMENT" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0J8d0000012jhIEAQ"/>
-      </associations>
+      <associations/>
     </environment>
     <environment name="DEV">
       <summary/>
       <associations>
-        <association assocationType="TM.ENVIRONMENT" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0J8d0000012jhDEAQ"/>
+        <association assocationType="TM.ENVIRONMENT" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0926000004bdg3AAA"/>
       </associations>
     </environment>
     <environment name="Production">
       <summary/>
-      <associations>
-        <association assocationType="TM.ENVIRONMENT" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0J8d0000012jhJEAQ"/>
-      </associations>
+      <associations/>
     </environment>
     <environment name="Scratch">
       <summary>Developer Scratch Org</summary>
       <associations>
-        <association assocationType="TM.ENVIRONMENT" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0J8d0000012kVhEAI"/>
+        <association assocationType="TM.ENVIRONMENT" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0926000004bdg2AAA"/>
       </associations>
     </environment>
   </environments>
@@ -88,10 +84,10 @@
     </connectionClass>
     <connectionClass name="testmanager">
       <connections>
-        <connection id="a55dea86-34ad-441a-8ca3-d110224a6230" name="ProvarManager">
+        <connection id="a5fdb91a-ced5-4899-a584-22e4442d3803" name="PM">
           <summary/>
           <connectionUrls>
-            <connectionUrl secureStorageNodeId="ccb2b120-0a8e-42c5-8cc9-13581d41b141" url="tm:projectName=ProvarProject;projectKey=DHD;clientId={clientId};clientSecret={clientSecret};callbackUrl={callbackUrl};environment=PROD_DEV;accessToken={accessToken};refreshToken={refreshToken};apiLoginUrl=https://provar-devops-center-dev-ed.my.salesforce.com;identityServiceUrl=https://login.salesforce.com/id/00D8d000002d0gkEAA/0058d000002FxSbAAK"/>
+            <connectionUrl secureStorageNodeId="1d69ef12-8c4e-4bfe-b98a-4608d7782e5d" url="tm:projectName=ProvarProject;projectKey=PMTest;clientId={clientId};clientSecret={clientSecret};callbackUrl={callbackUrl};environment=SANDBOX;accessToken={accessToken};refreshToken={refreshToken};apiLoginUrl=https://inspiration-flow-6100-dev-ed.scratch.my.salesforce.com;identityServiceUrl=https://test.salesforce.com/id/00D26000000Ht5qEAC/0052600000ANvmPAAT;sendScreenshots=true"/>
           </connectionUrls>
         </connection>
       </connections>
@@ -210,6 +206,6 @@
     </browserProvider>
   </browserProviders>
   <associations>
-    <association assocationType="TM.TEST_PROJECT" connectionId="a55dea86-34ad-441a-8ca3-d110224a6230" entityKey="a0Y8d000000ZAyJEAW"/>
+    <association assocationType="TM.TEST_PROJECT" connectionId="a5fdb91a-ced5-4899-a584-22e4442d3803" entityKey="a0f26000003WeUyAAK"/>
   </associations>
 </testProject>
